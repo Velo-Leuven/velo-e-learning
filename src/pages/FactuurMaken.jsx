@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Navbar from "../components/Navbar";
 
 const FactuurMakenData = {
   name: "Factuur Maken(met Klantenreferentie)",
 
-  video: "/media/administrations/fp/fpvideo.mp4",
+    video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
 
   steps: [
     {
@@ -19,21 +19,21 @@ const FactuurMakenData = {
            
             
           </ol>,
-      image: "/media/administrations/fm/fm1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm1.jpeg`,
     },
     {
       number: 2,
       title: "Naam van de klant invullen",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm2.jpeg`,
     },
     {
       number: 3,
       title: "Klik op het abonnement van de klant",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm3.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm3.jpeg`,
     },
     {
       number: 4,
@@ -41,7 +41,7 @@ const FactuurMakenData = {
       instruction:
         ".................",
       
-      image: "/media/administrations/fm/fm4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm4.jpeg`,
     },
 
     {
@@ -49,7 +49,7 @@ const FactuurMakenData = {
       title: "Klik op Concept Maken knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm5.jpeg`,
     },
 
     {
@@ -57,7 +57,7 @@ const FactuurMakenData = {
       title: "Klik op Overig Info knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm6.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm6.jpeg`,
     },
 
     {
@@ -65,7 +65,7 @@ const FactuurMakenData = {
       title: "Geef de Klantenreferentie",
       instruction:
         "....................",
-      image: "/media/administrations/fm/fm7.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm7.jpeg`,
     },
 
     {
@@ -73,7 +73,7 @@ const FactuurMakenData = {
       title: "Klik op Bevestigen knop",
       instruction:
         ".............",
-      image: "/media/administrations/fm/fm8.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm8.jpeg`,
     },
 
     {
@@ -82,7 +82,7 @@ const FactuurMakenData = {
       instruction:
         ".................",
         
-      image: "/media/administrations/fm/fm9.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm9.jpeg`,
     },
 
     {
@@ -91,103 +91,104 @@ const FactuurMakenData = {
       instruction:
         ".................",
        
-      image: "/media/administrations/fm/fm10.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm10.jpeg`,
     },
     {
       number: 11,
       title: "Klik op Kassa knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm11.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm11.jpeg`,
     },
     {
       number: 12,
       title: "Klik op Verkoop Hervatten knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm12.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm12.jpeg`,
     },
     {
       number: 13,
       title: "Klik op Acties knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm13.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm13.jpeg`,
     },
     {
       number: 14,
       title: "Klik op Offerte/Order knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm14.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm14.jpeg`,
     },
     {
       number: 15,
       title: "Zoek de naam van de klant",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm15.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm15.jpeg`,
     },
     {
       number: 16,
       title: "Klik op Klant info knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm16.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm16.jpeg`,
     },
     {
       number: 17,
       title: "Klik op Reken de order af",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm17.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm17.jpeg`,
     },
     {
       number: 18,
       title: "Klik op Acties knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm18.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm18.jpeg`,
     },
     {
       number: 19,
       title: "Klik op Klantnotitie knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm19.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm19.jpeg`,
     },
     {
       number: 20,
       title: "Klik op Toepassen knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm20.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm20.jpeg`,
     },
     {
       number: 21,
       title: "Klik op Betaling knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm21.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm21.jpeg`,
     },
     {
       number: 22,
       title: "Kies de Betaalmethode en klik op Bevestigen knop",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm22.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm22.jpeg`,
     },
     {
       number: 23,
       title: "Factuur is aangemaakt",
       instruction:
         ".................",
-      image: "/media/administrations/fm/fm23.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fm/fm23.jpeg`,
     }
   ],
 };
 
 function FactuurMaken({
+  icon,
   admin,
   onBack,
   onHomeClick,
@@ -197,6 +198,13 @@ function FactuurMaken({
 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = FactuurMakenData.steps[currentStep];
 
@@ -211,10 +219,7 @@ function FactuurMaken({
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      
     }
   };
 
@@ -225,10 +230,7 @@ function FactuurMaken({
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      
     }
   };
 
@@ -245,7 +247,7 @@ function FactuurMaken({
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+  style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
 
       {/* Navbar */}
@@ -311,7 +313,7 @@ function FactuurMaken({
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -345,7 +347,7 @@ function FactuurMaken({
 
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -411,9 +413,9 @@ function FactuurMaken({
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
+            <div className="mt-3 text-lg leading-8 text-gray-600">
               {step.instruction}
-            </p>
+            </div>
 
           </div>
 
@@ -427,9 +429,9 @@ function FactuurMaken({
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
 

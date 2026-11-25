@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "../components/Navbar";
 
 const CityBikeBrakeData = {
   
@@ -17,7 +18,7 @@ const CityBikeBrakeData = {
         title: "Prepare the bike",
         instruction:
           "Place the bicycle securely on the repair stand. Make sure the bike is stable before starting the repair.",
-        image: "/media/wheel/front-wheel-step1.jpg",
+        image: `${import.meta.env.BASE_URL}/media/wheel/front-wheel-step1.jpg`,
       },
       {
         number: 2,
@@ -26,7 +27,7 @@ const CityBikeBrakeData = {
           "Release the front brake so that the wheel can be removed safely.",
         warning:
           "Make sure the brake is completely released before removing the wheel.",
-           image: "/media/wheel/maxresdefault.jpg",
+          image: `${import.meta.env.BASE_URL}/media/wheel/front-wheel-step1.jpg`,
       },
       {
         number: 3,
@@ -72,8 +73,33 @@ const CityBikeBrakeData = {
     
 };
 
-function BrakeCityBike({ procedure, bike, onBack }) {
+function BrakeCityBike({  bike, onBack, onHomeClick,
+  onAdministrationClick,
+  onTechnicalTrainingClick,
+  onTechnicalForTalentClick, }) {
   const [currentStep, setCurrentStep] = useState(0);
+
+
+   // Handle navigation back to the main pages
+  const handleHomeNavigation = () => {
+    
+    if (onHomeClick) onHomeClick();
+  };
+
+  const handleAdministrationNavigation = () => {
+    
+    if (onAdministrationClick) onAdministrationClick();
+  };
+
+  const handleTechnicalTrainingNavigation = () => {
+   
+    if (onTechnicalTrainingClick) onTechnicalTrainingClick();
+  };
+
+  const handleTechnicalForTalentNavigation = () => {
+    
+    if (onTechnicalForTalentClick) onTechnicalForTalentClick();
+  };
 
  
 
@@ -94,7 +120,19 @@ function BrakeCityBike({ procedure, bike, onBack }) {
   };
 
   return (
-    <div className="min-h-screen px-6 py-12">
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
+      
+       style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgtt.jpg")` }}
+    >
+      <Navbar
+        onHomeClick={handleHomeNavigation}
+        onAdministrationClick={handleAdministrationNavigation}
+        onTechnicalTrainingClick={handleTechnicalTrainingNavigation}
+        onTechnicalForTalentClick={handleTechnicalForTalentNavigation}
+        activePage="Technical Training"
+      />
+
 
       {/* Top bar */}
       <div className="border-b bg-white">
@@ -129,9 +167,7 @@ function BrakeCityBike({ procedure, bike, onBack }) {
            ......
           </h1>
 
-          <p className="mt-3 text-lg text-gray-400">
-            {bike.name}
-          </p>
+          
 
         </div>
 

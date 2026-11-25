@@ -21,11 +21,11 @@ const ServiceTypes = [
     name: "Technical For Talent",
     icon: "🎓",
   },
-  {
-    id: 4,
-    name: "HR",
-    icon: "👥",
-  },
+  // {
+  //   id: 4,
+  //   name: "....",
+  //   icon: "👥",
+  // },
 ];
 
 function VeloELearning() {
@@ -114,12 +114,12 @@ function VeloELearning() {
 
   // Main Home page
   return (
-    <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-      style={{
-        backgroundImage: 'url("/background.jpg")',
-      }}
-    >
+   <div
+  className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
+  style={{
+    backgroundImage: `url("${import.meta.env.BASE_URL}background.jpg")`,
+  }}
+>
 
       <Navbar
         onHomeClick={handleHome}
@@ -133,13 +133,13 @@ function VeloELearning() {
 
         {/* Header */}
         <div className="mb-12 text-center">
-          <p className="mt-6 text-3xl font-bold text-gray-900">
-            What do you want to learn?
+          <p className="mt-6 text-4xl font-bold text-white font-serif tracking-wide background-clip-text  bg-gradient-to-r from-red-500 to-pink-300">
+            Wat wil je leren?
           </p>
         </div>
 
         {/* Service cards */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-1">
 
           {ServiceTypes.map((service) => (
             <button

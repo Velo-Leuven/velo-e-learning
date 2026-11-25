@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Navbar from "../components/Navbar";
 
 const fietsverplaatsenData = {
   name: "Fiets Verplaatsen",
 
-  video: "/media/administrations/fp/fpvideo.mp4",
+ video: `${import.meta.env.BASE_URL}media/administrations/fv/fvvideo.mp4`,
 
   steps: [
     {
       number: 1,
-      title: "Klik op partijen / Serienum",
+      title: "Klik op partijen / Serienummers",
       instruction:
         "De locatie van waar de fiets(en) vertrekken doet ook de verplaatsing van de fietsen in Odoo. Bv. : Als een fiets vertrekt van Fietspunt Aarschot naar Fietspunt Leuven, dan wordt de verplaatsing in Odoo gedaan door Fietpunt Aarschot.",
       
-      image: "/media/administrations/fv/fv1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fv/fv1.jpeg`,
     },
 
     {
@@ -22,7 +22,7 @@ const fietsverplaatsenData = {
       title: "Scan de barcode",
       instruction:
         ".................",
-      image: "/media/administrations/fv/fv2.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/fv/fv2.jpeg`,
     },
 
     {
@@ -30,15 +30,15 @@ const fietsverplaatsenData = {
       title: "Klik op de info",
       instruction:
         ".................",
-      image: "/media/administrations/fv/fv3.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/fv/fv3.jpeg`,
     },
 
     {
       number: 4,
-      title: "Klik op Fietsen verplaatsen knop",
+      title: "Klik op Aanvinken -> Fietsen verplaatsen knop",
       instruction:
         "....................",
-      image: "/media/administrations/fv/fv4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fv/fv4.jpeg`,
     },
 
     {
@@ -46,7 +46,7 @@ const fietsverplaatsenData = {
       title: "Scan de locatie",
       instruction:
         ".............",
-      image: "/media/administrations/fv/fv5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fv/fv5.jpeg`,
     },
 
     {
@@ -54,7 +54,7 @@ const fietsverplaatsenData = {
       title: "Klik op Bevestigen knop",
       instruction:
         ".................",
-      image: "/media/administrations/fv/fv6.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fv/fv6.jpeg`,
     }
 
     
@@ -62,6 +62,7 @@ const fietsverplaatsenData = {
 };
 
 function FietsVerplaatsen({
+  icon,
   admin,
   onBack,
   onHomeClick,
@@ -71,6 +72,13 @@ function FietsVerplaatsen({
 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = fietsverplaatsenData.steps[currentStep];
 
@@ -85,10 +93,7 @@ function FietsVerplaatsen({
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -99,10 +104,7 @@ function FietsVerplaatsen({
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -119,7 +121,7 @@ function FietsVerplaatsen({
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+  style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
 
       {/* Navbar */}
@@ -185,7 +187,7 @@ function FietsVerplaatsen({
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -219,7 +221,7 @@ function FietsVerplaatsen({
 
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -285,9 +287,9 @@ function FietsVerplaatsen({
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
+            <div className="mt-3 text-lg leading-8 text-gray-600">
               {step.instruction}
-            </p>
+            </div>
 
           </div>
 
@@ -301,9 +303,9 @@ function FietsVerplaatsen({
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
 

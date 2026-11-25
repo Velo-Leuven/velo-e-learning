@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Navbar from "../components/Navbar";
 
 const fietsverkoopData = {
   name: "Fietsverkoop Particulier Afrekenen",
 
-  video: "/media/administrations/fp/fpvideo.mp4",
-
+  
+   video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
   steps: [
     {
       number: 1,
       title: "Klik op Contacten",
       instruction:
-        ".......................",
+        "Check of het om een bedrijf of om een Persoon gaat.",
       warning:
         "Een klant komt aan met fiets en verkoopfiche.",
-      image: "/media/administrations/fp/fp1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fp/fp1.jpeg`,   
     },
 
     {
@@ -23,7 +23,7 @@ const fietsverkoopData = {
       title: "Klik op Verkoop knop",
       instruction:
         ".................",
-      image: "/media/administrations/fp/fp2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fp/fp2.jpeg`,
     },
 
     {
@@ -31,7 +31,7 @@ const fietsverkoopData = {
       title: "Klik op Nieuw knop",
       instruction:
         ".................",
-      image: "/media/administrations/fp/fp3.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fp/fp3.jpeg`,
     },
 
     {
@@ -39,7 +39,7 @@ const fietsverkoopData = {
       title: "Klant info invullen",
       instruction:
         "....................",
-      image: "/media/administrations/fp/fp4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fp/fp4.jpeg`,
     },
 
     {
@@ -47,15 +47,15 @@ const fietsverkoopData = {
       title: "Klik op Bevestigen knop",
       instruction:
         ".............",
-      image: "/media/administrations/fp/fp5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fp/fp5.jpeg`,
     },
 
     {
       number: 6,
       title: "Factuur is aangemaakt",
       instruction:
-        ".................",
-      image: "/media/administrations/fp/fp6.jpeg",
+        "Kopieer het S-nummer. We plakken dit daarna in de orderlijst in de kassa. Zo moet je niet de hele naam uittypen.",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fp/fp6.jpeg`,
     },
 
     {
@@ -63,12 +63,13 @@ const fietsverkoopData = {
       title: "Afrekening van de klant",
       instruction:
         ".................",
-      image: "/media/administrations/fp/fp7.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fp/fp7.jpeg`,
     }
   ],
 };
 
 function Fietsverkoop({
+  icon,
   admin,
   onBack,
   onHomeClick,
@@ -78,6 +79,13 @@ function Fietsverkoop({
 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
+   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, []); 
 
   const step = fietsverkoopData.steps[currentStep];
 
@@ -92,10 +100,7 @@ function Fietsverkoop({
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -106,10 +111,7 @@ function Fietsverkoop({
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -126,7 +128,7 @@ function Fietsverkoop({
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+  style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
 
       {/* Navbar */}
@@ -192,7 +194,7 @@ function Fietsverkoop({
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -226,7 +228,7 @@ function Fietsverkoop({
 
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -292,9 +294,9 @@ function Fietsverkoop({
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
+            <div className="mt-3 text-lg leading-8 text-gray-600">
               {step.instruction}
-            </p>
+            </div>
 
           </div>
 
@@ -308,9 +310,9 @@ function Fietsverkoop({
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Navbar from "../components/Navbar";
 
 const fietsverhData = {
@@ -7,16 +7,16 @@ const fietsverhData = {
 
  
 
-  video: "/media/administrations/fh/fhvideo.mp4",
+   video: `${import.meta.env.BASE_URL}media/administrations/fh/fhvideo.mp4`,
 
   steps: [
     {
       number: 1,
       title: "Klik op Fiets-Gebruiker knop",
       instruction:
-        ".......................",
+        "Order afrekenen -> [STEP:21]",
         
-      image: "/media/administrations/fh/fh1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh1.jpeg`,
     },
 
     {
@@ -24,7 +24,7 @@ const fietsverhData = {
       title: "Klik op Nieuw knop",
       instruction:
         ".................",
-      image: "/media/administrations/fh/fh2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh2.jpeg`,
     },
 
     {
@@ -32,7 +32,7 @@ const fietsverhData = {
       title: "Klant info invullen",
       instruction:
         ".................",
-        image: "/media/administrations/fh/fh3.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh3.jpeg`,
     },
 
     {
@@ -40,7 +40,7 @@ const fietsverhData = {
       title: "Klik op Bevestigen knop",
       instruction:
         "....................",
-      image: "/media/administrations/fh/fh4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh4.jpeg`,
     },
 
     {
@@ -48,229 +48,189 @@ const fietsverhData = {
       title: "Klik op Ophalen knop",
       instruction:
         ".............",
-        image: "/media/administrations/fh/fh5.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh5.jpeg`,
     },
 
     {
       number: 6,
       title: "Klik op Bevestigen knop",
-      instruction:
-        ".................",
-        image: "/media/administrations/fh/fh6.jpeg",
+      instruction: <ol className="list-decimal pl-6"> <h1 className="font-bold"> → order bevestigen → klik op klantnaam → je bent bij contacten klant. →  ga naar abonnementen (naast saldilijst) <h2>Mogelijkheden:</h2>
+</h1>
+            <li>Geen lopend contract meer (ideaal) → klik op nieuw.</li>
+            <li> lopend contract (over datum)
+    <ol className="list-decimal pl-6"> <h1 className="font-bold">zelfde fiets soort:</h1>
+<li>Regel toevoegen orders.</li>
+<li> Verlengen.</li>
+<li>Digitaltekenen</li>
+    </ol>
+<ol className="list-decimal pl-6"> <h1 className="font-bold">Andere fietssoort(afsluiten en waarborg overzetten):</h1>
+<li>Contract afsluiten en einddatum onthouden.</li>
+<li> Waarborg cash.</li>
+
+    </ol>
+
+            </li>
+           
+            
+          </ol>,
+      
+        image:  `${import.meta.env.BASE_URL}/media/administrations/fh/fh6.jpeg`,
     },
     {
         number: 7,
-        title: "Klik op Fiets-Gebruiker",
+        title: "Klik op Klantnaam",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh7.jpeg",
+        image:  `${import.meta.env.BASE_URL}/media/administrations/fh/fh7.jpg`,
     },
     {
         number: 8,
         title: "Klik op Abonnementen",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh8.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh8.jpg`,
     },
     {
         number: 9,
         title: "Klik op Nieuw knop",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh9.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh9.jpg`,
     },
     {
         number: 10,
         title: "Info invullen",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh10.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh10.jpeg`,
     },
     {
         number: 11,
         title: "Offertesjabloon gekozen",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh11.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh11.jpeg`,
     },
     {
         number: 12,
         title: "Klik op Regel toevoegen",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh12.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh12.jpeg`,
     },
     {
         number: 13,
-        title: "Klik op checkbox",
+        title: "Ophalen Fiets volgende factuurdatum (morgen)",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh13.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh13.jpeg`,
     },
+    
     {
         number: 14,
-        title: "Klik op Selecteren knop",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh14.jpeg",
-    },
-    {
-        number: 15,
         title: "Kies de Onderwijsinstelling",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh15.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh15.jpeg`,
     },
     {
-        number: 16,
+        number: 15,
         title: "Studentnummer invullen",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh16.jpeg",
+          warning:"Voor KUL R-nummer en niet U-nummer (U-nummer is personeel -> enkel 2dehandfiets). Geen R-nummer-> 2dehandfiets",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh16.jpeg`,
     },
     {
-        number: 17,
+        number: 16,
         title: "Huurtermijn Kiezen",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh17.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh17.jpeg`,
     },
     {
-        number: 18,
+        number: 17,
         title: "Klik op Digitaal Handtekenen",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh18.jpeg",
+        image:  `${import.meta.env.BASE_URL}/media/administrations/fh/fh18.jpeg`,
+    },
+    {
+        number: 18,
+        title: "Klik op Accept & Sign knop",
+        instruction:
+          ".................",
+        image:  `${import.meta.env.BASE_URL}/media/administrations/fh/fh19.jpeg`,
     },
     {
         number: 19,
         title: "Klik op Accept & Sign knop",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh19.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh20.jpeg`,
     },
+    
     {
         number: 20,
-        title: "Klik op Accept & Sign knop",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh20.jpeg",
-    },
-    {
-        number: 21,
-        title: "Klik op Back to edit mode",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh21.jpeg",
-    },
-    {
-        number: 22,
-        title: "Klik op Abonnementen",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh22.jpeg",
-    },
-    {
-        number: 23,
-        title: "Klik op Kassa knop",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh23.jpeg",
-    },
-    {
-        number: 24,
-        title: "Klik op Verkoop Hervatten knop",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh24.jpeg",
-    },
-    {
-        number: 25,
         title: "Klik op Acties knop",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh25.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh25.jpeg`,
     },
     {
-        number: 26,
+        number: 21,
         title: "Klik op Offerte / Order",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh26.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh26.jpeg`,
     },
     {
-        number: 27,
+        number: 22,
         title: "Klantnaam invullen",
         instruction:
-          ".................",
-        image: "/media/administrations/fh/fh27.jpeg",
+          "Helemaal FRESH -> nieuw contract van boven of Verlenging -> zoeken",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh27.jpeg`,
     },
     {
-        number: 28,
+        number: 23,
         title: "Klik op juiste Offerte / Order",
         instruction:
-          ".................",
-        image: "/media/administrations/fh/fh28.jpeg",
+          "Te factureren-> in principe ook orde kosten checken. Niet factureren-> Niet",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh28.jpeg`,
     },
     {
-        number: 29,
+        number: 24,
         title: "Klik op Reken de order af",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh29.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh29.jpeg`,
     },
     {
-        number: 30,
+        number: 25,
         title: "Klik op Betaling knop",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh30.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh30.jpeg`,
     },
     {
-        number: 31,
+        number: 26,
         title: "Kies Betaalmethode en Klik op Bevestigen",
         instruction:
-          ".................",
-        image: "/media/administrations/fh/fh31.jpeg",
+          "VB. Klant heeft 100 cash en 170 kaart-> kies eerst (Kas Veiling1) -> 100 aanklikken. Dan klikt (Kaartbetaling) voor 170 kaart (Resterend)",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh31.jpeg`,
     },
     {
-        number: 32,
-        title: "Ontvangstbewijs is aangemaakt",
+        number: 27,
+        title: "Nieuw Order klikken voor het volgende",
         instruction:
           ".................",
-        image: "/media/administrations/fh/fh32.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fh/fh32.jpeg`,
     },
-    {
-        number: 33,
-        title: "Klik op Backend",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh33.jpeg",
-    },
-    {
-        number: 34,
-        title: "Klik op Kassa",
-        instruction:
-          ".................",
-        image: "/media/administrations/fh/fh34.jpeg",
-    },
-    {
-        number: 35,
-        title: "Info van de klant nakijken",
-        warning:
-          "Zoek het abonnement van de klant opnieuw op ter controle.",
-        instruction:
-          <ol className="list-decimal pl-6"> <h1 className="font-bold">Contrroleer:</h1>
-            <li>De datum van de volgende factuur (= de einddatum van de huurtermijn).</li>
-            <li>Of er een waarborg aan het abonnement is gelinkt.</li>
-            
-          </ol>,
-        image: "/media/administrations/fh/fh35.jpeg",
-    },
+    
   ],
 };
 
-function FietsVerhuur({ admin,
+function FietsVerhuur({ icon, admin,
   onBack,
   onHomeClick,
   onAdministrationClick,
@@ -278,6 +238,13 @@ function FietsVerhuur({ admin,
  onTechnicalForTalentClick}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = fietsverhData.steps[currentStep];
 
@@ -292,10 +259,7 @@ function FietsVerhuur({ admin,
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -306,10 +270,7 @@ function FietsVerhuur({ admin,
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -323,10 +284,40 @@ function FietsVerhuur({ admin,
     }
   };
 
+   const renderInstruction = (instruction) => {
+    // If instruction is JSX or another React element, display it directly
+    if (typeof instruction !== "string") {
+      return instruction;
+    }
+  
+    const parts = instruction.split(/(\[STEP:\d+\])/g);
+  
+    return parts.map((part, index) => {
+      const match = part.match(/\[STEP:(\d+)\]/);
+  
+      if (match) {
+        const stepNumber = Number(match[1]);
+  
+        return (
+          <button
+            key={index}
+            type="button"
+            onClick={() => goToStep(stepNumber)}
+            className="text-blue-600 underline font-semibold hover:text-blue-800 cursor-pointer"
+          >
+            Step {stepNumber}
+          </button>
+        );
+      }
+  
+      return <React.Fragment key={index}>{part}</React.Fragment>;
+    });
+  };
+
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+ style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
     {/* Navbar */}
 
@@ -381,7 +372,7 @@ function FietsVerhuur({ admin,
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -414,7 +405,7 @@ function FietsVerhuur({ admin,
         {currentStep === 0 && fietsverhData.video && (
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -426,6 +417,33 @@ function FietsVerhuur({ admin,
               >
                 <source
                   src={fietsverhData.video}
+                  type="video/mp4"
+                />
+
+                Your browser does not support video playback.
+              </video>
+
+            </div>
+
+          </div>
+        )}
+
+
+         {currentStep === 20 && fietsverhData.video && (
+          <div className="mt-10">
+
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
+              🎥 Instructional Video
+            </h2>
+
+            <div className="overflow-hidden rounded-2xl bg-black shadow-lg">
+
+              <video
+                controls
+                className="w-full"
+              >
+                <source
+                  src={`${import.meta.env.BASE_URL}media/administrations/fh/fh2video.mp4`}
                   type="video/mp4"
                 />
 
@@ -476,9 +494,9 @@ function FietsVerhuur({ admin,
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
-              {step.instruction}
-            </p>
+            <div className="mt-3 text-lg leading-8 text-gray-600">
+              {renderInstruction(step.instruction)}
+            </div>
 
           </div>
 
@@ -490,9 +508,9 @@ function FietsVerhuur({ admin,
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
           )}

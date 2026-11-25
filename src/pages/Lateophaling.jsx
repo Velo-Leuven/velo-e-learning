@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 const LateOphalingData = {
@@ -7,25 +7,25 @@ const LateOphalingData = {
 
  
 
-  video: "/media/administrations/fpvideo.mp4",
+ video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
 
   steps: [
     {
       number: 1,
-      title: "klik op Herstelling",
+      title: "klik op Herstellingen",
       instruction:
         ".......................",
         
         
-      image: "/media/administrations/lp/lp1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp1.jpeg`,
     },
 
     {
       number: 2,
-      title: "Klik op  'Herstelling Verling' tab",
+      title: "Klik op  'Herstelling Veiling' tab",
       instruction:
         ".................",
-      image: "/media/administrations/lp/lp2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp2.jpeg`,
     },
 
     {
@@ -33,7 +33,7 @@ const LateOphalingData = {
       title: "Scan de barcode",
       instruction:
         ".................",
-        image: "/media/administrations/lp/lp3.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp3.jpeg`,
     },
 
     {
@@ -41,7 +41,7 @@ const LateOphalingData = {
       title: "Klik op Info",
       instruction:
         "....................",
-      image: "/media/administrations/lp/lp4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp4.jpeg`,
     },
 
     {
@@ -49,127 +49,113 @@ const LateOphalingData = {
       title: "Klik op $ icon",
       instruction:
       ".................",
-      image: "/media/administrations/lp/lp5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp5.jpeg`,
     },
 
     {
       number: 6,
       title: "Klik op producten toevoegen",
-      instruction:
-        "..",
-        image: "/media/administrations/lp/lp6.jpeg",
+      instruction:"",
+        image:  `${import.meta.env.BASE_URL}/media/administrations/lp/lp6.jpeg`,
     },
+    
     {
         number: 7,
-        title: "Klik op Herstelling tab",
-        
-        instruction:
-          ".................",
-        image: "/media/administrations/lp/lp7.jpeg",
-    },
-    {
-        number: 8,
-        title: "klik op Kassa",
-        
-        instruction:
-          "...",
-        image: "/media/administrations/lp/lp8.jpeg",
-    },
-    {
-        number: 9,
-        title: "Klik op Verkoop hervatten",
-        
-        instruction:
-          ".................",
-        image: "/media/administrations/lp/lp9.jpeg",
-    },
-    {
-        number: 10,
         title: "Klik op Acties knop",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp10.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp10.jpeg`,
     },
     {
-        number: 11,
+        number: 8,
         title: "Klik op Offerte / Order knop",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp11.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp11.jpeg`,
     },
     {
-        number: 12,
+        number: 9,
         title: "Zoek de naam van de klant",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp12.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp12.jpeg`,
     },
     {
-        number: 13,
+        number: 10,
         title: "Klik op de naam van de klant",
         
         instruction:
-          ".................",
-        image: "/media/administrations/lp/lp13.jpeg",
+        <ol className="list-decimal pl-6"><li>Check ordernummer en naam.</li>
+        <li>Afrekenen zoals altijd.</li>
+        <li>Dit is een voorbeeld om af te rekenen.</li>
+        </ol>,
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp13.jpeg`,
     },
     {
-        number: 14,
+        number: 11,
         title: "Klik op Reken de order af",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp14.jpeg",
+        image:  `${import.meta.env.BASE_URL}/media/administrations/lp/lp14.jpeg`,
     },
     {
-        number: 15,
+        number: 12,
         title: "Klik op Betaling knop",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp15.jpeg",
+        image:  `${import.meta.env.BASE_URL}/media/administrations/lp/lp15.jpeg`,
     },
     {
-        number: 16,
-        title: "Klik op Bevestig knop",
+        number: 13,
+        title: "Klik op Bevestigen knop",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp16.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp16.jpeg`,
     },
     {
-        number: 17,
+        number: 14,
         title: "Ontvangsbewijs wordt getoond",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp17.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp17.jpeg`,
     },
     {
-        number: 18,
+        number: 15,
         title: "Klik op Backend knop",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp18.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp18.jpeg`,
     },
     {
-        number: 19,
+        number: 16,
         title: "Klik op Kassa knop",
         
         instruction:
           ".................",
-        image: "/media/administrations/lp/lp19.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/lp/lp19.jpeg`,
     }
    
   ],
 };
 
-function LateOphaling({ admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
+function LateOphaling({ icon, admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput]=useState(currentStep+1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = LateOphalingData.steps[currentStep];
 
@@ -184,10 +170,7 @@ function LateOphaling({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
       setCurrentStep(next);
       setStepInput(next+1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -196,10 +179,7 @@ function LateOphaling({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
       const previous=currentStep - 1;
       setCurrentStep(previous);
       setStepInput(previous+1);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -217,7 +197,7 @@ function LateOphaling({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
   return (
     <div 
     className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-    style={{backgroundImage: 'url(/bgfh.jpg)'}}
+    style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
     >
      {/* Navbar */}
      <Navbar
@@ -265,11 +245,11 @@ function LateOphaling({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
-           <h1 className="mt-5 text-4xl font-bold text-gray-900">
+           <h1 className="mt-5 text-4xl font-bold text-red-500">
               {admin.name}
             </h1>
           )}
@@ -298,7 +278,7 @@ function LateOphaling({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
         {currentStep === 0 && LateOphalingData.video && (
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -374,9 +354,9 @@ function LateOphaling({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
           )}

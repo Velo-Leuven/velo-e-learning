@@ -9,17 +9,17 @@ const bikeTypes = [
   {
     id: 1,
     name: "City Bike",
-    image: "/media/biketypes/normalbike.jpg",
+    image: `${import.meta.env.BASE_URL}/media/biketypes/normalbike.jpg`,
   },
   {
     id: 2,
     name: "E-Bike",
-    image: "/media/biketypes/Ebike.jpg",
+    image: `${import.meta.env.BASE_URL}/media/biketypes/Ebike.jpg`,
   },
   {
     id: 3,
     name: "SWUGO Bike",
-    image: "/media/biketypes/swugo.jpg",
+    image: `${import.meta.env.BASE_URL}/media/biketypes/swugo.jpg`,
   },
   {
     id: 4,
@@ -34,37 +34,64 @@ function TechnicalTraining({
   onAdministrationClick,
   onTechnicalTrainingClick,
    onTechnicalForTalentClick,
-}) {
-  const [selectedBike, setSelectedBike] = useState(null);
+ }) {
 
-  const handleBikeClick = (bike) => {
-    setSelectedBike(bike);
+
+
+
+  const [selectedAdmin, setSelectedAdmin] = useState(null);
+
+  const handleAdminClick = (admin) => {
+    setSelectedAdmin(admin);
   };
 
   const handleBack = () => {
-    setSelectedBike(null);
+    
+    setSelectedAdmin(null);
+    //onBack();
+     
   };
+  const handleAdministrationClick = () => {
+  setSelectedAdmin(null);
+  onTechnicalTrainingClick();
+};
 
   // Show repair categories
-  if (selectedBike && selectedBike.name === "City Bike") {
+  if (selectedAdmin && selectedAdmin.name === "City Bike") {
     return (
       <RepairCategories
-        bike={selectedBike}
+        admin={selectedAdmin}
         onBack={handleBack}
+        onHomeClick={onHomeClick}
+        onAdministrationClick={onAdministrationClick}
+        onTechnicalTrainingClick={handleAdministrationClick}
+        onTechnicalForTalentClick={onTechnicalForTalentClick}
+      
       />
     );
-  }else if (selectedBike && selectedBike.name === "E-Bike") {
+  }
+  else if (selectedAdmin && selectedAdmin.name === "E-Bike") {
     return (
       <RepairCategoriesEBike
-        bike={selectedBike}
+        admin={selectedAdmin}
         onBack={handleBack}
+        onHomeClick={onHomeClick}
+        onAdministrationClick={onAdministrationClick}
+        onTechnicalTrainingClick={handleAdministrationClick}
+        onTechnicalForTalentClick={onTechnicalForTalentClick}
       />
     );
-  }else if (selectedBike && selectedBike.name === "SWUGO Bike") {
+  }
+  else if (selectedAdmin && selectedAdmin.name === "SWUGO Bike") {
     return (
       <RepairCategoriesSWUGO
-        bike={selectedBike}
+       admin={selectedAdmin}
         onBack={handleBack}
+        onHomeClick={onHomeClick}
+        onAdministrationClick={onAdministrationClick}
+        onTechnicalTrainingClick={handleAdministrationClick}
+        onTechnicalForTalentClick={onTechnicalForTalentClick}
+        
       />
     );
   }
@@ -72,9 +99,8 @@ function TechnicalTraining({
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-      style={{
-        backgroundImage: 'url("/bgtt.jpg")',
-      }}
+      
+       style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgtt.jpg")` }}
     >
 
       {/* Navbar */}
@@ -117,8 +143,8 @@ function TechnicalTraining({
             TECHNICAL TRAINING
           </h2>
 
-          <p className="mt-6 text-2xl font-bold text-gray-600">
-            What do you want to repair?
+          <p className="mt-6 text-2xl font-bold text-white font-serif tracking-wide background-clip-text  bg-gradient-to-r from-red-200 to-pink-800">
+            Wat wil je repareren?
           </p>
 
         </div>
@@ -129,7 +155,7 @@ function TechnicalTraining({
           {bikeTypes.map((bike) => (
             <button
               key={bike.id}
-              onClick={() => handleBikeClick(bike)}
+              onClick={() => handleAdminClick(bike)}
               className="
                 group
                 flex

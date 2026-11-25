@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 const VerkooporderData = {
@@ -7,25 +7,25 @@ const VerkooporderData = {
 
  
 
-  video: "/media/administrations/fpvideo.mp4",
+   video: `${import.meta.env.BASE_URL}media/administrations/fp/fpvideo.mp4`,
 
   steps: [
     {
       number: 1,
-      title: "Open het verkooporder, klik op Herstelling",
+      title: "Open het verkooporder, klik op Herstellingen",
       instruction:
         ".......................",
         warning: "Een verkooporder wordt automatisch gemaakt wanneer er een herstelfiche ingevuld wordt. Dit is ook hetgeen in de kassa afgerekend wordt. Het is niet de bedoeling dat hier vaak dingen aan veranderd worden. Doet dit alleen als er iets te weinig of te veel op een herstelfiche staat",
         
-      image: "/media/administrations/va/va1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/va/va1.jpeg`,
     },
 
     {
       number: 2,
-      title: "Klik op  'Herstelling FRA - Particulier' tab",
+      title: "Klik op  'Herstelling FPA - Particulier' tab",
       instruction:
         ".................",
-      image: "/media/administrations/va/va2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/va/va2.jpeg`,
     },
 
     {
@@ -33,7 +33,7 @@ const VerkooporderData = {
       title: "Scan de barcode",
       instruction:
         ".................",
-        image: "/media/administrations/va/va3.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/va/va3.jpeg`,
     },
 
     {
@@ -41,7 +41,7 @@ const VerkooporderData = {
       title: "Klik op Info",
       instruction:
         "....................",
-      image: "/media/administrations/va/va4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/va/va4.jpeg`,
     },
 
     {
@@ -49,7 +49,7 @@ const VerkooporderData = {
       title: "Klik op $ icon",
       instruction:
       ".................",
-      image: "/media/administrations/va/va5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/va/va5.jpeg`,
     },
 
     {
@@ -57,7 +57,7 @@ const VerkooporderData = {
       title: "Dingen toevoegen aan verkooporder",
       instruction:
         "Klik op producten toevoegen",
-        image: "/media/administrations/va/va6.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/va/va6.jpeg`,
     },
     {
         number: 7,
@@ -65,7 +65,7 @@ const VerkooporderData = {
         
         instruction:
           ".................",
-        image: "/media/administrations/va/va7.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/va/va7.jpeg`,
     },
     {
         number: 8,
@@ -73,7 +73,7 @@ const VerkooporderData = {
         
         instruction:
           "Klik op producten toevoegen",
-        image: "/media/administrations/va/va8.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/va/va8.jpeg`,
     },
     {
         number: 9,
@@ -81,7 +81,7 @@ const VerkooporderData = {
         
         instruction:
           ".................",
-        image: "/media/administrations/va/va9.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/va/va9.jpeg`,
     },
     {
         number: 10,
@@ -89,15 +89,22 @@ const VerkooporderData = {
         
         instruction:
           ".................",
-        image: "/media/administrations/va/va10.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/va/va10.jpeg`,
     }
    
   ],
 };
 
-function Verkooporder({ admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
+function Verkooporder({ icon, admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput]=useState(currentStep+1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = VerkooporderData.steps[currentStep];
 
@@ -112,10 +119,7 @@ function Verkooporder({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
       setCurrentStep(next);
       setStepInput(next+1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      
     }
   };
 
@@ -124,10 +128,7 @@ function Verkooporder({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
       const previous=currentStep - 1;
       setCurrentStep(previous);
       setStepInput(previous+1);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -145,7 +146,7 @@ function Verkooporder({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
   return (
     <div 
     className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-    style={{backgroundImage: 'url(/bgfh.jpg)'}}
+     style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
     >
      {/* Navbar */}
      <Navbar
@@ -193,11 +194,11 @@ function Verkooporder({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
-           <h1 className="mt-5 text-4xl font-bold text-gray-900">
+           <h1 className="mt-5 text-4xl font-bold text-red-500">
               {admin.name}
             </h1>
           )}
@@ -226,7 +227,7 @@ function Verkooporder({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
         {currentStep === 0 && VerkooporderData.video && (
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -302,9 +303,9 @@ function Verkooporder({ admin, onBack ,onHomeClick,onAdministrationClick,onTechn
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
           )}

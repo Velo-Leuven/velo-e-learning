@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 const gestolenfietsData = {
@@ -7,16 +7,91 @@ const gestolenfietsData = {
 
  
 
-  video: "/media/administrations/fpvideo.mp4",
+  video: `${import.meta.env.BASE_URL}media/administrations/gf/gfvideo.mp4`,
 
   steps: [
     {
       number: 1,
-      title: "Klik op Fiets-Gebruiker knop",
-      instruction:
-        ".......................",
+      title: "Klik op Abonnementen knop",
+      
+instruction: (
+  <div>
+    <h3 className="font-bold text-lg mb-2">
+      Aangifte al gedaan?
+    </h3>
+
+    <ol className="list-decimal pl-6 space-y-2">
+      <li>Ja → Fietsnummer of Naam</li>
+
+      <li>
+        Nee → Naam → Fietsnummer aan klant geven voor aangifte te kunnen doen
+
+        <ol className="list-decimal pl-6 mt-2 space-y-1">
+          <li>Klik op naam → Contacten → Abonnementen.</li>
+          <li>
+            In Abonnementen: klik op Order → Opgehaalde fiets →
+            Rapporteer diefstal → Bevestigen.
+          </li>
+        </ol>
+
+        <h3 className="font-bold mt-4 mb-2">
+          Aangifte zelf → moet in notities komen:
+        </h3>
+
+        <ol className="list-[upper-alpha] pl-6 space-y-2">
+          <li>
+            Fysieke aangifte op papier
+
+            <ol className="list-[lower-alpha] pl-6 mt-2 space-y-1">
+              <li>
+                <strong>Scanner Cannon:</strong>
+                <ol className="list-decimal pl-6 mt-1 space-y-1">
+                  <li>Scannen & verzenden.</li>
+                  <li>Type boek.</li>
+                  <li>Adres: info@velo.be (= sneltoets)</li>
+                  <li>
+                    Mails: in de mailbox zoeken (koesio-copier...).
+                  </li>
+                  <li>Downloaden en in Notities loggen.</li>
+                  <li>
+                    Type (fiets (nummer) gestolen, waarborg tot +
+                    (datum aangifte + 12 maanden)).
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            Aangifte per pdf van klant.
+
+            <ol className="list-[lower-alpha] pl-6 mt-2 space-y-1">
+              <li>Naar info@velo.be mailen.</li>
+              <li>Downloaden.</li>
+              <li>Zie vorige stappen vanaf (e).</li>
+            </ol>
+          </li>
+
+          <li>
+            Geen aangifte.
+
+            <ol className="list-[lower-alpha] pl-6 mt-2 space-y-1">
+              <li>Klant moet naar politie en later terugkomen.</li>
+              <li>
+                Klant kan op onze pc aangifte doen (of thuis).
+              </li>
+              <li>Dan zie vorige stappen vanuit (B).</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+),
+
+        warning:"MOET: Aangifte Diefstal zijn, MET FIETSNUMMER! Attest slachtofferhulp of Attest klachtneerlegging telt NIET. Geen bewijs aangifte diefstal met vermeld fietsnr = geen recht op vervangfiets.",
         
-      image: "/media/administrations/gf/gf1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gf/gf1.jpeg`,
     },
 
     {
@@ -24,7 +99,7 @@ const gestolenfietsData = {
       title: "Info invullen",
       instruction:
         ".................",
-      image: "/media/administrations/gf/gf2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gf/gf2.jpeg`,
     },
 
     {
@@ -32,7 +107,7 @@ const gestolenfietsData = {
       title: "Klik op orderreferentie",
       instruction:
         ".................",
-        image: "/media/administrations/gf/gf3.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/gf/gf3.jpeg`,
     },
 
     {
@@ -40,22 +115,22 @@ const gestolenfietsData = {
       title: "Klik op Rapporteer Diefstal knop",
       instruction:
         "....................",
-      image: "/media/administrations/gf/gf4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gf/gf4.jpeg`,
     },
 
     {
       number: 5,
       title: "Nakijken de labels",
       instruction:
-      <div><h1 className="text-lg font-bold">Vervangfiets huren na diefstal</h1>
-      <ul className="list-disc pl-5">
+      
+      <ul className="list-disc pl-5"><h1 className="text-lg font-bold">Vervangfiets huren na diefstal</h1>
         <li>Maak een nieuw verhuurorder voor de nieuwe fiets.</li>
         <li>Maak een nieuw abonnement voor de nieuwe fiets, met dezelfde start- en einddatum als op het abonnement van de gestolen fiets.</li>
         <li>Zet op de regel voor de huur van de fiets 100% korting (zo moet de klant niet opnieuw betalen voor de huur, maar betaalt hij/zij wel opnieuw voor de waarborg).</li>
         <li>Reken het nieuwe abonnement af in de kassa.</li>
         
-      </ul></div>,
-      image: "/media/administrations/gf/gf5.jpeg",
+      </ul>,
+      image: `${import.meta.env.BASE_URL}/media/administrations/gf/gf5.jpeg`,
     },
 
     {
@@ -63,7 +138,7 @@ const gestolenfietsData = {
       title: "Kies de juiste procedure",
       instruction:
         ".................",
-        image: "/media/administrations/gf/gf6.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/gf/gf6.jpeg`,
     },
     {
         number: 7,
@@ -72,15 +147,22 @@ const gestolenfietsData = {
         "Bij het afrekenen in de kassa moet je alleen de waarborg van de nieuwe fiets opnieuw aanrekenen.",
         instruction:
           ".................",
-        image: "/media/administrations/gf/gf7.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/gf/gf7.jpeg`,
     }
    
   ],
 };
 
-function GestolenFiets({ admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
+function GestolenFiets({ icon, admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput]=useState(currentStep+1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = gestolenfietsData.steps[currentStep];
 
@@ -95,10 +177,7 @@ function GestolenFiets({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
       setCurrentStep(next);
       setStepInput(next+1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -107,10 +186,7 @@ function GestolenFiets({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
       const previous=currentStep - 1;
       setCurrentStep(previous);
       setStepInput(previous+1);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      
     }
   };
 
@@ -128,7 +204,7 @@ function GestolenFiets({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
   return (
     <div 
     className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-    style={{backgroundImage: 'url(/bgfh.jpg)'}}
+    style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
     >
      {/* Navbar */}
      <Navbar
@@ -176,11 +252,11 @@ function GestolenFiets({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
-           <h1 className="mt-5 text-4xl font-bold text-gray-900">
+           <h1 className="mt-5 text-4xl font-bold text-red-500">
               {admin.name}
             </h1>
           )}
@@ -209,7 +285,7 @@ function GestolenFiets({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
         {currentStep === 0 && gestolenfietsData.video && (
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -285,9 +361,9 @@ function GestolenFiets({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
           )}

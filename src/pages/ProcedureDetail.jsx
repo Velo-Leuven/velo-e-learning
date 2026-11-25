@@ -1,5 +1,5 @@
  import React, { useState } from "react";
-
+import Navbar from "../components/Navbar";
 const procedureData = {
   "Change Front Wheel": {
     difficulty: "Medium",
@@ -17,7 +17,7 @@ const procedureData = {
         title: "Prepare the bike",
         instruction:
           "Place the bicycle securely on the repair stand. Make sure the bike is stable before starting the repair.",
-        image: "/media/wheel/front-wheel-step1.jpg",
+        image: `${import.meta.env.BASE_URL}/media/wheel/front-wheel-step1.jpg`,
       },
       {
         number: 2,
@@ -26,7 +26,7 @@ const procedureData = {
           "Release the front brake so that the wheel can be removed safely.",
         warning:
           "Make sure the brake is completely released before removing the wheel.",
-           image: "/media/wheel/maxresdefault.jpg",
+          image: `${import.meta.env.BASE_URL}/media/wheel/front-wheel-step1.jpg`,
       },
       {
         number: 3,
@@ -87,12 +87,14 @@ const procedureData = {
         title: "Prepare the bike",
         instruction:
           "Place the bicycle securely on the repair stand and make sure it cannot move.",
+          image: `${import.meta.env.BASE_URL}/media/wheel/front-wheel-step1.jpg`,
       },
       {
         number: 2,
         title: "Release the rear brake",
         instruction:
           "Release the rear brake before removing the rear wheel.",
+          image: `${import.meta.env.BASE_URL}/media/wheel/front-wheel-step1.jpg`,
       },
       {
         number: 3,
@@ -131,10 +133,11 @@ const procedureData = {
           "Perform a complete safety check before returning the bicycle to the customer.",
       },
     ],
+     video: "/media/wheel/front-wheel.mp4",
   },
 };
 
-function ProcedureDetail({ procedure, bike, onBack }) {
+function ProcedureDetail({ procedure, bike, onBack, onHomeClick, onAdministrationClick,onTechnicalTrainingClick,onTechnicalForTalentClick }) {
   const [currentStep, setCurrentStep] = useState(0);
 
   const data = procedureData[procedure.name];
@@ -154,10 +157,25 @@ function ProcedureDetail({ procedure, bike, onBack }) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+  const handleTechnicalTrainingNavigation = () => {
+    setSelectedProcedure(null);
+    if (onTechnicalTrainingClick) onTechnicalTrainingClick();
+  };
 
   return (
-    <div className="min-h-screen px-6 py-12">
-
+  <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
+      
+       style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgtt.jpg")` }}
+    >
+      
+ <Navbar
+        onHomeClick={onHomeClick}
+        onAdministrationClick={ onAdministrationClick}
+        onTechnicalTrainingClick={handleTechnicalTrainingNavigation}
+        onTechnicalForTalentClick={onTechnicalForTalentClick}
+        activePage="Technical Training"
+      />
       {/* Top bar */}
       <div className="border-b bg-white">
 
@@ -187,12 +205,12 @@ function ProcedureDetail({ procedure, bike, onBack }) {
             🚲
           </div>
 
-          <h1 className="mt-5 text-4xl font-bold text-gray-900">
+          <h1 className="mt-5 text-4xl font-bold text-red-600">
             {procedure.name}
           </h1>
 
           <p className="mt-3 text-lg text-gray-400">
-            {bike.name}
+            {/* {bike.name} */}
           </p>
 
         </div>
@@ -254,7 +272,7 @@ function ProcedureDetail({ procedure, bike, onBack }) {
 {currentStep === 0 && data.video && (
   <div className="mt-10">
     
-    <h2 className="mb-4 text-xl font-semibold text-gray-900">
+    <h2 className="mb-4 text-xl font-semibold text-red-600">
       🎥 Instructional Video
     </h2>
 

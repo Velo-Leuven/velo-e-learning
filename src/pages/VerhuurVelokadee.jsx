@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Navbar from "../components/Navbar";
 
 const VerhuurVelokadeeData = {
   name: "Verhuur VELOkadee",
 
-  video: "/media/administrations/fp/fpvideo.mp4",
+   video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
 
   steps: [
     {
       number: 1,
       title: "Voor een nieuwe klant – nog niet zelf aangemeld - selecteer Contacten",
+      warning:" UITPAS video klik op [STEP:18].",
       instruction:
-        ".................",
+        "Fiets wisselen? Klik op [STEP:22] (voor herstellers zelf). Fiets binnenbrengen voor herstelling? Klik op [STEP:31] (voor herstellers zelf). Ophalen na (herstelling / wissel)? Klik op [STEP:35]. Fiets aanmelden voor afbraak? Klik op [STEP:51] (voor herstellers zelf).",
         
-      image: "/media/administrations/vv/vv1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv1.jpeg`,
     },
     {
       number: 2,
       title: "klik op Nieuw knop",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv2.jpeg`,
     },
     {
       number: 3,
-      title: "Vul alle gegevens in van de ouder (roos = verplichte velden)",
+      title: "Vul alle gegevens in van de ouder (rood = verplichte velden)",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv3.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv3.jpeg`,
     },
     {
       number: 4,
@@ -36,7 +37,7 @@ const VerhuurVelokadeeData = {
       instruction: "................."   
           ,
       
-      image: "/media/administrations/vv/vv4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv4.jpeg`,
     },
 
     {
@@ -45,7 +46,7 @@ const VerhuurVelokadeeData = {
       instruction:
         ".................",
         
-      image: "/media/administrations/vv/vv5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv5.jpeg`,
     },
 
     {
@@ -53,7 +54,7 @@ const VerhuurVelokadeeData = {
       title: "Opslaan gaat automatisch door linksboven terug te gaan naar Contacten",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv6.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv6.jpeg`,
     },
 
     {
@@ -61,14 +62,14 @@ const VerhuurVelokadeeData = {
       title: "Fiets koppelen aan kind / Ga naar Fiets - Gebruiker",
       instruction:
         "....................",
-      image: "/media/administrations/vv/vv7.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv7.jpeg`,
     },
 
     {
       number: 8,
       title: "Kies Nieuw",
       instruction: ".",
-      image: "/media/administrations/vv/vv8.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv8.jpeg`,
     },
 
     {
@@ -77,7 +78,7 @@ const VerhuurVelokadeeData = {
       instruction:
         ".................",
         
-      image: "/media/administrations/vv/vv9.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv9.jpeg`,
     },
 
     {
@@ -86,42 +87,42 @@ const VerhuurVelokadeeData = {
       instruction:
         ".................",
        
-      image: "/media/administrations/vv/vv10.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv10.jpeg`,
     },
     {
       number: 11,
-      title: "Controleer of de cursor op de juiste plaats staat en scan het fietsnummer en klik op Bevestigen",
+      title: " Klik op Bevestigen",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv11.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv11.jpeg`,
     },
     {
       number: 12,
       title: "Klik vervolgens op Ophalen - je ziet de fiets staan – en klik op Bevestigen",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv12.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv12.jpeg`,
     },
     {
       number: 13,
       title: "Abonnement koppelen aan ouder / Ga je naar Abonnementen",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv13.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv13.jpeg`,
     },
     {
       number: 14,
       title: "Klik op Nieuw",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv14.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv14.jpeg`,
     },
     {
       number: 15,
       title: "Geef de ouder in als Klant (het is de ouder die het contract tekent, niet het kind)",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv15.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv15.jpeg`,
     },
     {
       number: 16,
@@ -129,225 +130,231 @@ const VerhuurVelokadeeData = {
       instruction:
         ".................",
         
-      image: "/media/administrations/vv/vv16.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv16.jpeg`,
     },
     {
       number: 17,
       title: "Onder Orderreferentie, klik op Regel toevoegen ",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv17.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv17.jpeg`,
     },
     {
       number: 18,
       title: "Selecteer het juiste fietsnummer",
       instruction:
-        ".................",
-      image: "/media/administrations/vv/vv18.jpeg",
+        <ol className="list-decimal pl-5"><h1 className="font-bold">Bij korting, vraag UITPAS</h1>
+          <li>Kind UITPAS nodig (niet UITPAS ouder).</li>
+          <li>Kanserntarief beschikbaar en aanwezig.</li>
+          <li>Scan de UITPAS of voer het manueel in.</li>
+          <li> UITPAS module moet open staan.</li>
+        </ol>,
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv18.jpeg`,
     },
     {
       number: 19,
       title: "Als het kansentarief van toepassing is, geef dan 80% korting via Korting",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv19.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv19.jpeg`,
     },
     {
       number: 20,
       title: "Klik vervolgens op Digitaal handtekenen",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv20.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv20.jpeg`,
     },
     {
       number: 21,
-      title: "Klik op Accepteer en Teken, de klant kan nu op het touchscreen tekenen",
+      title: "Klik op Accepteer en Teken, de klant kan nu op het ander scherm tekenen",
       instruction:
         ".................",
         
-      image: "/media/administrations/vv/vv21.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv21.jpeg`,
     },
     {
       number: 22,
       title: "Bestaande klant (Fiets wisselen) / Ga naar Fiets - Gebruiker",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv22.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv22.jpeg`,
     },
     {
       number: 23,
       title: "Scan het fietsnummer in de zoekbalk en open het verhuurorder door erop te klikken",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv23.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv23.jpeg`,
     },
     {
       number: 24,
       title: "Kies hier Fietswissel",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv24.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/vv/vv24.jpeg`,
     },
     {
       number: 25,
       title: "Kies Regel toevoegen",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv25.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/vv/vv25.jpeg`,
     },
     {
       number: 26,
       title: "Scan de barcode van de nieuwe fiets",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv26.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/vv/vv26.jpeg`,
     },
     {
       number: 27,
       title: "Als er geen schade is aan de fiets, kies Bevestigen zonder herstelling.",
       instruction:
         ".................",
-      image: "/media/administrations/vv/vv27.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/vv/vv27.jpeg`,
     },
     {
       number: 28,
       title: "Als de fiets beschadigd is, kies dan Bevestigen met herstelling.",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv28.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv28.jpeg`,
     },
     {
       number: 29,
       title: "Bij Product toevoegen, scan de barcode uit de map met alle herstellingen die nodig zijn.",
       instruction:
         ".....",
-      image: "/media/administrations/vv/vv29.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv29.jpeg`,
     },
     {
       number: 30,
       title: "Kies Bevestigen",
       instruction:
         "...",
-      image: "/media/administrations/vv/vv30.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv30.jpeg`,
     },
     {
       number: 31,
       title: "Fiets binnenbrengen voor herstelling / Ga naar Fiets - Gebruiker",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv31.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv31.jpeg`,
     },
     {
       number: 32,
       title: "Scan het fietsnummer in de zoekbalk en open het verhuurorder door erop te klikken",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv32.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv32.jpeg`,
     },
     {
       number: 33,
       title: "Kies Herstelling",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv33.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv33.jpeg`,
     },
     {
       number: 34,
       title: "Bevestig herstelling",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv34.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv34.jpeg`,
     },
     {
       number: 35,
       title: "Ophalen na (herstelling / wissel) / Ga naar Fiets - Gebruiker",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv35.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv35.jpeg`,
     },
     {
       number: 36,
       title: "Scan het fietsnummer in de zoekbalk en open het verhuurorder door erop te klikken",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv36.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv36.jpeg`,
     },
     {
       number: 37,
-      title: "Klik op Bevestigen/Ophalen en Bevestigen in functie van de mogelijkheden",
+      title: "Klik op Bevestigen/Ophalen en Bevestigen",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv37.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv37.jpeg`,
     },
     {
       number: 38,
       title: "Check of de verhuurstatus is veranderd in Opgehaald.",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv38.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv38.jpeg`,
     },
     {
       number: 39,
       title: "Check ook de einddatum van het abonnement. Indien je merkt dat deze binnenkort verloopt of reeds is verlopen, verleng dan het contract (zie Abonnement verlengen 🡪 ).",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv39.jpeg",
+        warning: "Klanten mogen geen Velokadee hebben als het kind 14j wordt tijdens de huur. Of als ze al 13 zijn. Niet zeker? Vraag identiteitskaart of UITPAS van het kind.",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv39.jpeg`,
     },
     {
       number: 40,
       title: "Abonnement verlengen / Ga naar Fiets - Gebruiker",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv40.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv40.jpeg`,
     },
     {
       number: 41,
       title: "Scan het fietsnummer in de zoekbalk en open het verhuurorder door erop te klikken.",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv41.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv41.jpeg`,
     },
     {
       number: 42,
-      title: "Klik op de orderreferentie en open de abonnementspagina door op de pijltjes te klikken.",
+      title: "In verhuurorder, klik op naam kind  -> ouder -> Abonnementen",
       instruction:
-        ".",
-      image: "/media/administrations/vv/vv42.jpeg",
+        "Hier zie je alle abonnementen, dus ook als de klant er nog vervallen heeft. In deze abonnementen kan je op de verhuurorders klikken om te zien om welk kind het gaat per abonnement.",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/vv/vv42.jpeg`,
     },
     {
       number: 43,
       title: "Klik op Verlengen",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv43.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/vv/vv43.jpeg`,
     },
     {
       number: 44,
       title: "Als het kansentarief van toepassing is, geef dan 80% korting via Korting",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv44.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv44.jpeg`,
     },
     {
       number: 45,
       title: "Klik vervolgens op Digitaal handtekenen",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv45.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv45.jpeg`,
     },
     {
       number: 46,
       title: "Klik op Accepteer en Teken, de klant kan nu op het touchscreen tekenen.",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv46.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv46.jpeg`,
     },
     {
       number: 47,
-      title: "Afrekenen / Ga naar Kassa ",
+      title: "Ga naar tabblad kassa.",
       instruction:
-        ".",
-      image: "/media/administrations/vv/vv47.jpeg",
+        "Als dit nog niet open staat, open een nieuwe.",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv47.jpeg`,
     },
     {
       number: 48,
@@ -355,29 +362,32 @@ const VerhuurVelokadeeData = {
       instruction:
         ".",
        
-      image: "/media/administrations/vv/vv48.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/vv/vv48.jpeg`,
     },
     {
       number: 49,
       title: "Typ de naam van de klant in de zoekbalk en check zo alle openstaande betalingen, reken af door op de order te klikken",
       instruction:
-        ".",
-        
-      image: "/media/administrations/vv/vv49.jpeg",
+        <ol className="list-decimal pl-5">
+          <li>Compleet nieuw? → order staat bovenaan.</li>
+          <li>Verlenging? → naam intypen van ouder.</li>
+         
+        </ol>,
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv49.jpeg`,
     },
     {
       number: 50,
       title: "Klik op Reken de order af",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv50.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv50.jpeg`,
     },
     {
       number: 51,
       title: "Fiets aanmelden voor afbraak / Ga naar Voorraad > bewerkingen > afkeuren",
       instruction:
          ".",
-      image: "/media/administrations/vv/vv51.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv51.jpeg`,
     },
     {
       number: 52,
@@ -385,27 +395,28 @@ const VerhuurVelokadeeData = {
       instruction:
         ".",
        
-      image: "/media/administrations/vv/vv52.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv52.jpeg`,
     },
     {
       number: 53,
       title: "Vul hier het type in van het product (bv. Velokadee – 16 inch), dan wordt het aantal ook automatisch ingevuld.",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv53.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv53.jpeg`,
     },
     {
       number: 54,
       title: "Vul tenslotte het serienummer van de fiets voor afbraak in en klik op de knop ‘Bevestigen’.",
       instruction:
         ".",
-      image: "/media/administrations/vv/vv54.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/vv/vv54.jpeg`,
     }
     
   ],
 };
 
 function VerhuurVelokadee({
+  icon,
   admin,
   onBack,
   onHomeClick,
@@ -415,6 +426,13 @@ function VerhuurVelokadee({
 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = VerhuurVelokadeeData.steps[currentStep];
 
@@ -429,10 +447,7 @@ function VerhuurVelokadee({
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -443,10 +458,7 @@ function VerhuurVelokadee({
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -460,10 +472,40 @@ function VerhuurVelokadee({
     }
   };
 
+  const renderInstruction = (instruction) => {
+    // If instruction is JSX or another React element, display it directly
+    if (typeof instruction !== "string") {
+      return instruction;
+    }
+  
+    const parts = instruction.split(/(\[STEP:\d+\])/g);
+  
+    return parts.map((part, index) => {
+      const match = part.match(/\[STEP:(\d+)\]/);
+  
+      if (match) {
+        const stepNumber = Number(match[1]);
+  
+        return (
+          <button
+            key={index}
+            type="button"
+            onClick={() => goToStep(stepNumber)}
+            className="text-blue-600 underline font-semibold hover:text-blue-800 cursor-pointer"
+          >
+            Step {stepNumber}
+          </button>
+        );
+      }
+  
+      return <React.Fragment key={index}>{part}</React.Fragment>;
+    });
+  };
+
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+  style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
 
       {/* Navbar */}
@@ -529,7 +571,7 @@ function VerhuurVelokadee({
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -563,7 +605,7 @@ function VerhuurVelokadee({
 
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -576,6 +618,35 @@ function VerhuurVelokadee({
 
                 <source
                   src={VerhuurVelokadeeData.video}
+                  type="video/mp4"
+                />
+
+                Your browser does not support video playback.
+
+              </video>
+
+            </div>
+
+          </div>
+
+        )}
+         {currentStep === 17&& VerhuurVelokadeeData.video && (
+
+          <div className="mt-10">
+
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
+              🎥 Instructional Video
+            </h2>
+
+            <div className="overflow-hidden rounded-2xl bg-black shadow-lg">
+
+              <video
+                controls
+                className="w-full"
+              >
+
+                <source
+                  src={`${import.meta.env.BASE_URL}media/administrations/vv/vvvideo.mp4`}
                   type="video/mp4"
                 />
 
@@ -629,9 +700,9 @@ function VerhuurVelokadee({
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
-              {step.instruction}
-            </p>
+            <div className="mt-3 text-lg leading-8 text-gray-600">
+              {renderInstruction(step.instruction)}
+            </div>
 
           </div>
 
@@ -645,9 +716,9 @@ function VerhuurVelokadee({
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
-                {step.warning}
-              </p>
+              <div className="mt-2 text-yellow-700 ">
+                {renderInstruction(step.warning)}
+              </div>
 
             </div>
 

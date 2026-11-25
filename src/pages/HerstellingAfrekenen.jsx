@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 const HerstellingData = {
@@ -7,7 +7,7 @@ const HerstellingData = {
 
  
 
-  video: "/media/administrations/fpvideo.mp4",
+video: `${import.meta.env.BASE_URL}media/administrations/ha/havideo.mp4`,
 
   steps: [
     {
@@ -17,7 +17,7 @@ const HerstellingData = {
         ".......................",
         
         
-      image: "/media/administrations/ha/ha1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha1.jpeg`,
     },
 
     {
@@ -25,7 +25,7 @@ const HerstellingData = {
       title: "Klik op Kassa Openen",
       instruction:
         ".................",
-      image: "/media/administrations/ha/ha2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha2.jpeg`,
     },
 
     {
@@ -33,7 +33,7 @@ const HerstellingData = {
       title: "klik op Acties knop",
       instruction:
         ".................",
-        image: "/media/administrations/ha/ha3.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha3.jpeg`,
     },
 
     {
@@ -41,7 +41,7 @@ const HerstellingData = {
       title: "Klik op Offerte / Order",
       instruction:
         "....................",
-      image: "/media/administrations/ha/ha4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha4.jpeg`,
     },
 
     {
@@ -49,15 +49,17 @@ const HerstellingData = {
       title: "Zoek de klant op naam en klik op de klant",
       instruction:
       ".................",
-      image: "/media/administrations/ha/ha5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha5.jpeg`,
     },
 
     {
       number: 6,
       title: "Klik op Reken de order af",
       instruction:
-        "..",
-        image: "/media/administrations/ha/ha6.jpeg",
+        <ol className="list-decimal pl-6"><li>Check of het juiste naam en order is.</li>
+      <li>kijk of er iets anders open staat.</li>
+      </ol>,
+        image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha6.jpeg`,
     },
     {
         number: 7,
@@ -65,7 +67,7 @@ const HerstellingData = {
         
         instruction:
           ".................",
-        image: "/media/administrations/ha/ha7.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha7.jpeg`,
     },
     {
         number: 8,
@@ -73,15 +75,16 @@ const HerstellingData = {
         
         instruction:
           "...",
-        image: "/media/administrations/ha/ha8.jpeg",
+           warning: "Enkel kas, kaartbetaling of payconiq (transactielijst moet open zijn).",
+        image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha8.jpeg`,
     },
     {
         number: 9,
-        title: "Klik op Bevistigen",
+        title: "Klik op Bevestigen",
         
         instruction:
           ".................",
-        image: "/media/administrations/ha/ha9.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/ha/ha9.jpeg`,
     },
     {
         number: 10,
@@ -89,16 +92,22 @@ const HerstellingData = {
         
         instruction:
           ".................",
-        image: "/media/administrations/ha/ha10.jpeg",
+        image:  `${import.meta.env.BASE_URL}/media/administrations/ha/ha10.jpeg`,
     }
    
   ],
 };
 
-function HerstellingAfrekenen({ admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
+function HerstellingAfrekenen({ icon, admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput]=useState(currentStep+1);
-
+useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, []); 
   const step = HerstellingData.steps[currentStep];
 
   const handleBack=()=>{
@@ -112,10 +121,7 @@ function HerstellingAfrekenen({ admin, onBack ,onHomeClick,onAdministrationClick
       setCurrentStep(next);
       setStepInput(next+1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -124,10 +130,7 @@ function HerstellingAfrekenen({ admin, onBack ,onHomeClick,onAdministrationClick
       const previous=currentStep - 1;
       setCurrentStep(previous);
       setStepInput(previous+1);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+     
     }
   };
 
@@ -145,7 +148,7 @@ function HerstellingAfrekenen({ admin, onBack ,onHomeClick,onAdministrationClick
   return (
     <div 
     className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-    style={{backgroundImage: 'url(/bgfh.jpg)'}}
+    style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
     >
      {/* Navbar */}
      <Navbar
@@ -193,11 +196,11 @@ function HerstellingAfrekenen({ admin, onBack ,onHomeClick,onAdministrationClick
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
-           <h1 className="mt-5 text-4xl font-bold text-gray-900">
+           <h1 className="mt-5 text-4xl font-bold text-red-500">
               {admin.name}
             </h1>
           )}
@@ -226,7 +229,7 @@ function HerstellingAfrekenen({ admin, onBack ,onHomeClick,onAdministrationClick
         {currentStep === 0 && HerstellingData.video && (
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -302,9 +305,9 @@ function HerstellingAfrekenen({ admin, onBack ,onHomeClick,onAdministrationClick
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
           )}

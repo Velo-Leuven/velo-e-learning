@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 
 import Navbar from "../components/Navbar";
 
@@ -27,7 +27,7 @@ const chapters = [
         </ol>
       </div>
     ),
-    pdf: "/media/technical-talent/Hoofdstuk 1 soorten fietsen en de wet.pdf",
+    pdf:`${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 1 soorten fietsen en de wet.pdf`,
   },
 
   {
@@ -62,12 +62,12 @@ const chapters = [
         </ol>
       </div>
     ),
-    pdf: "/media/technical-talent/Hoofdstuk 2 banden.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 2 banden.pdf`,
   },
 
   {
     id: 3,
-    title: "Mechanicain de fietstechniek",
+    title: "Mechanica in de fietstechniek",
     description: (
       <div>
         <h3 className="mb-2 font-bold">Inhoud</h3>
@@ -141,7 +141,7 @@ const chapters = [
         </ol>
       </div>
     ),
-    pdf: "/media/technical-talent/Hoofdstuk 3 mech elektr meten verbindingen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 3 mech elektr meten verbindingen.pdf`,
   },
 
   {
@@ -184,7 +184,7 @@ const chapters = [
         </div>
             
             ,
-    pdf: "/media/technical-talent/Hoofdstuk 4. remmen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 4. remmen.pdf`,
   },
 
   {
@@ -225,7 +225,7 @@ const chapters = [
           <li>Het vervangen van gebroken spaken</li>
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 5 wielen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 5 wielen.pdf`,
   },
 
   {
@@ -274,7 +274,7 @@ const chapters = [
          
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 6 reinigen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 6 reinigen.pdf`,
   },
 
   {
@@ -313,7 +313,7 @@ const chapters = [
           </ol></li>
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 7. verlichting en electriciteit.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 7. verlichting en electriciteit.pdf`,
   },
   {
     id: 8,
@@ -331,7 +331,7 @@ const chapters = [
          <li>Het zelf opbouwen van een fiets</li>
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 8.groepen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 8.groepen.pdf`,
   },
   {
     id: 9,
@@ -381,7 +381,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 9.steekassen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 9.steekassen.pdf`,
   },
   {
     id: 10,
@@ -427,7 +427,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 10 balhoofden.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 10 balhoofden.pdf`,
   },
 
   {
@@ -503,7 +503,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 11.1 Aandrijving.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 11.1 Aandrijving.pdf`,
   },
   {
     id: 11.2,
@@ -562,7 +562,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 11.2 trapassen en cranks.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 11.2 trapassen en cranks.pdf`,
   },
    {
     id: 11.3,
@@ -613,7 +613,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 11.3 kettinglijn.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 11.3 kettinglijn.pdf`,
   },
   {
     id: 12,
@@ -648,7 +648,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 12 Derailleurs afstellen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 12 Derailleurs afstellen.pdf`,
   },
   {
     id: 12.3,
@@ -679,7 +679,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 12-3 Derailleurs afstellen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 12-3 Derailleurs afstellen.pdf`,
   },
   {
     id: 13,
@@ -717,7 +717,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 13. hydraulische remmen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 13. hydraulische remmen.pdf`,
   },
   {
     id: 14.1,
@@ -759,7 +759,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 14-1 vering.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 14-1 vering.pdf`,
   },
    {
     id: 14.2,
@@ -807,7 +807,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 14-2 vering onderhoud.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 14-2 vering onderhoud.pdf`,
   },
    {
     id: 15,
@@ -826,7 +826,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 15 elektrische fietsen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 15 elektrische fietsen.pdf`,
   },
   {
     id: 16,
@@ -855,7 +855,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 16 elektronisch schakelen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 16 elektronisch schakelen.pdf`,
   },
   {
     id: 17,
@@ -884,7 +884,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 17 riemaandrijving.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 17 riemaandrijving.pdf`,
   },
   {
     id: 18.1,
@@ -922,7 +922,7 @@ const chapters = [
             <li>Kennischeck</li>
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 18.1 interne versnellingsnaven.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 18.1 interne versnellingsnaven.pdf`,
   },
    {
     id: 18.2,
@@ -951,7 +951,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 18.2 naaf en trapasversnellingen.pdf",
+    pdf: `${import.meta.env.BASE_URL}/media/technical-talent/Hoofdstuk 18.2 naaf en trapasversnellingen.pdf`,
   },
   {
     id: 19,
@@ -969,7 +969,7 @@ const chapters = [
         
         </ol>
         </div>,
-    pdf: "/media/technical-talent/Hoofdstuk 19. Geometrie van fietsen.pdf",
+    pdf: `${import.meta.env.BASE_URL}media/technical-talent/Hoofdstuk 19. Geometrie van fietsen.pdf`,
   }
   
   
@@ -980,6 +980,29 @@ function TechnicalForTalent({ onBack, onHomeClick,
   onTechnicalTrainingClick, 
   onTechnicalForTalentClick,}) {
   const [selectedChapter, setSelectedChapter] = useState(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setShowBackToTop(window.scrollY > 300);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  // Check the initial scroll position
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
   const handleBikeClick = (bike) => {
     setSelectedBike(bike);
   };
@@ -1026,7 +1049,8 @@ function TechnicalForTalent({ onBack, onHomeClick,
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-fixed px-6 py-12"
-      style={{ backgroundImage: 'url("/bgtft.jpg")' }}
+     
+      style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgtft.jpg")` }}
     >
       <Navbar
         onHomeClick={onHomeClick}
@@ -1049,8 +1073,8 @@ function TechnicalForTalent({ onBack, onHomeClick,
             Technical for Talent
           </h1>
 
-          <p className="mt-3 text-xl text-gray-900">
-            Select a chapter to open the course slides.
+          <p className="mt-3 text-2xl text-white font-serif tracking-wide background-clip-text  bg-gradient-to-r from-red-200 to-pink-800">
+            Slecteer een hoofdstuk om de cursus slides te openen.
           </p>
         </div>
 
@@ -1080,6 +1104,17 @@ function TechnicalForTalent({ onBack, onHomeClick,
           ))}
         </div>
       </main>
+      {/* Back to Top Button */}
+{showBackToTop && (
+  <button
+    onClick={scrollToTop}
+    aria-label="Back to top"
+    title="Back to top"
+    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-red-600 text-2xl font-bold text-white shadow-lg transition hover:scale-110 hover:bg-red-700"
+  >
+    ↑
+  </button>
+)}
     </div>
   );
 }

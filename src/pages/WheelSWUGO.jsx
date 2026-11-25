@@ -1,5 +1,6 @@
  import React, { useState } from "react";
 import SWUGOWeelDetail from "./SWUGOWeelDetail";
+import Navbar from "../components/Navbar";
 
 const procedures = [
   {
@@ -18,22 +19,72 @@ const procedures = [
   },
 ];
 
-function WheelSWUGO({ bike, onBack }) {
+function WheelSWUGO({  admin,
+  onBack,
+  onHomeClick,
+  onAdministrationClick,
+  onTechnicalTrainingClick,
+  onTechnicalForTalentClick, }) {
   const [selectedProcedure, setSelectedProcedure] = useState(null);
+  // Open the selected procedure
+  const handleProcedureClick = (procedure) => {
+    setSelectedProcedure(procedure);
+  };
+
+  // Return to the wheel procedures list
+  const handleBack = () => {
+    setSelectedProcedure(null);
+  };
+
+  // Handle navigation back to the main pages
+  const handleHomeNavigation = () => {
+    setSelectedProcedure(null);
+    if (onHomeClick) onHomeClick();
+  };
+
+  const handleAdministrationNavigation = () => {
+    setSelectedProcedure(null);
+    if (onAdministrationClick) onAdministrationClick();
+  };
+
+  const handleTechnicalTrainingNavigation = () => {
+    setSelectedProcedure(null);
+    if (onTechnicalTrainingClick) onTechnicalTrainingClick();
+  };
+
+  const handleTechnicalForTalentNavigation = () => {
+    setSelectedProcedure(null);
+    if (onTechnicalForTalentClick) onTechnicalForTalentClick();
+  };
 
   // Show the selected procedure
   if (selectedProcedure) {
     return (
       <SWUGOWeelDetail
         procedure={selectedProcedure}
-        bike={bike}
-        onBack={() => setSelectedProcedure(null)}
+        admin={admin}
+        onBack={handleBack}
+        onHomeClick={handleHomeNavigation}
+        onAdministrationClick={handleAdministrationNavigation}
+        onTechnicalTrainingClick={handleTechnicalTrainingNavigation}
+        onTechnicalForTalentClick={handleTechnicalForTalentNavigation}
       />
     );
   }
 
   return (
-    <div className="min-h-screen  px-6 py-12">
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
+      
+       style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgtt.jpg")` }}
+    >
+      <Navbar
+        onHomeClick={handleHomeNavigation}
+        onAdministrationClick={handleAdministrationNavigation}
+        onTechnicalTrainingClick={handleTechnicalTrainingNavigation}
+        onTechnicalForTalentClick={handleTechnicalForTalentNavigation}
+        activePage="Technical Training"
+      />
 
       <div className="mx-auto max-w-5xl">
 
@@ -52,16 +103,14 @@ function WheelSWUGO({ bike, onBack }) {
             🔧
           </div>
 
-          <h1 className="mt-4 text-4xl font-bold text-gray-900">
+          <h1 className="mt-4 text-4xl font-bold text-red-600">
             Wheel
           </h1>
 
-          <p className="mt-4 text-xl text-gray-600">
-            {bike.name}
-          </p>
+         
 
-          <p className="mt-2 text-lg text-gray-500">
-            Select the procedure
+          <p className="mt-4 text-2xl font-bold text-white font-serif tracking-wide background-clip-text  bg-gradient-to-r from-red-200 to-pink-800">
+            Slecteer de procedure
           </p>
 
         </div>

@@ -14,6 +14,9 @@ import HerstellingAfrekenen from "./HerstellingAfrekenen";
 import VerhuurVelokadee from "./VerhuurVelokadee";
 import HandleidingKassa from "./HandleidingKassa";
 import FietsVerplaatsen from "./FietsVerplaatsen";
+import FietsVervangen from "./FietsVervangen";
+import FietsVerlengen from "./FietsVerlengen";
+import OphalingFietsHerstelling from "./OphalingFietsHerstelling";
 
 
 const adminTypes = [
@@ -21,66 +24,97 @@ const adminTypes = [
     id: 1,
     name: "Fietsverkoop Particulier Afrekenen",
     icon: "📝",
+    category: "Fiets",
   },
   {
     id: 2,
     name: "Fietsverhuur",
     icon: "🚲",
+    category: "Fiets",
   },
   {
     id: 3,
     name: "Fiets Wisselen Van Ander Type",
     icon: "🔄",
+    category: "Fiets",
   },
   {
     id: 4,
     name: "Factuur Maken(met Klantenreferentie)",
     icon: "💳",
+    category: "Kassa",
   },
   {
     id: 5,
     name: "Gestolen Fiets",
     icon: "🚨",
+    category: "Fiets",
   },
   {
     id: 6,
     name: "Waarborg Terugstorten",
     icon: "💰",
+    category: "Kassa",
   },
   {
     id: 7,
     name: "Groepsverhuur",
     icon: "👥",
+    category: "Fiets",
   },
   {
     id: 8,
     name: "Verkooporder Aanpassen",
     icon: "✏️",
+    category: "Kassa",
   },
   {
     id: 9,
     name: "Late Ophaling Aanrekenen",
     icon: "⏰",
+    category: "Kassa",
   },
   {
     id: 10,
     name: "Herstelling Afrekenen (privé fietsen)",
     icon: "🛠️",
+    category: "Kassa",
   },
   {
     id: 11,
     name: "Verhuur VELOkadee",
     icon: "🚲",
+    category: "Fiets",
   },
   {
     id:12,
     name:"Handleiding Kassa",
     icon:"💳",
+    category: "Kassa",
   },
   {
     id:13,
     name:"Fiets Verplaatsen",
     icon:"🚲",
+    category: "Fiets",
+  },
+  {
+  id:14,
+    name:"Fiets Vervangen (diefstal)",
+    icon:"🚲",
+    category: "Fiets",
+  },
+  {
+    id:15,
+    name:"Fiets Verlengen",
+    icon:"🚲",
+    category: "Fiets",
+  },
+  {
+    id:16,
+    name:" Ophaling Fiets uit Herstelling",
+    icon:"🚲",
+    category: "Fiets",
   }
 ];
 
@@ -92,6 +126,12 @@ function Administration({
   onTechnicalForTalentClick,
 }) {
   const [selectedAdmin, setSelectedAdmin] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState("Alles");
+
+const filteredAdminTypes =
+  selectedFilter === "Alles"
+    ? adminTypes
+    : adminTypes.filter((admin) => admin.category === selectedFilter);
 
   const handleAdminClick = (admin) => {
     setSelectedAdmin(admin);
@@ -115,6 +155,7 @@ function Administration({
   ) {
     return (
       <Fietsverkoop
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -132,6 +173,7 @@ function Administration({
   ) {
     return (
       <GestolenFiets
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -149,6 +191,7 @@ function Administration({
   ) {
     return (
       <FietsVerhuur
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -165,6 +208,7 @@ function Administration({
   ){
     return(
       <FietsWisselen
+      icon={selectedAdmin.icon}
       admin={selectedAdmin}
       onBack={handleBack}
       onHomeClick={onHomeClick}
@@ -182,6 +226,7 @@ function Administration({
   ){
     return(
       <Waarborg
+      icon={selectedAdmin.icon}
       admin={selectedAdmin}
       onBack={handleBack}
       onHomeClick={onHomeClick}
@@ -198,6 +243,7 @@ function Administration({
   ){
     return(
       <FactuurMaken
+      icon={selectedAdmin.icon}
       admin={selectedAdmin}
       onBack={handleBack}
       onHomeClick={onHomeClick}
@@ -214,6 +260,7 @@ function Administration({
   ){
     return(
       <GroepVerhuur
+      icon={selectedAdmin.icon}
       admin={selectedAdmin}
       onBack={handleBack}
       onHomeClick={onHomeClick}
@@ -230,6 +277,7 @@ function Administration({
   ){
     return(
       <Verkooporder
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -246,6 +294,7 @@ function Administration({
   ){
     return(
       <LateOphaling
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -262,6 +311,7 @@ function Administration({
   ){
     return(
       <HerstellingAfrekenen
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -278,6 +328,7 @@ function Administration({
   ){
     return(
       <VerhuurVelokadee
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -294,6 +345,7 @@ function Administration({
   ){
     return(
       <HandleidingKassa
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -310,6 +362,58 @@ function Administration({
   ){
     return(
       <FietsVerplaatsen
+        icon={selectedAdmin.icon}
+        admin={selectedAdmin}
+        onBack={handleBack}
+        onHomeClick={onHomeClick}
+        onAdministrationClick={handleAdministrationClick}
+        onTechnicalTrainingClick={onTechnicalTrainingClick}
+         onTechnicalForTalentClick={onTechnicalForTalentClick}
+      />
+    )
+  }
+//FietsVervangen
+  if(
+    selectedAdmin&&
+    selectedAdmin.name==="Fiets Vervangen (diefstal)"
+  ){
+    return(
+      <FietsVervangen
+        icon={selectedAdmin.icon}
+        admin={selectedAdmin}
+        onBack={handleBack}
+        onHomeClick={onHomeClick}
+        onAdministrationClick={handleAdministrationClick}
+        onTechnicalTrainingClick={onTechnicalTrainingClick}
+         onTechnicalForTalentClick={onTechnicalForTalentClick}
+      />
+    )
+  }   
+  //Fiets Verlengen
+  if(
+    selectedAdmin&&
+    selectedAdmin.name==="Fiets Verlengen"
+  ){
+    return(
+      <FietsVerlengen
+        icon={selectedAdmin.icon}
+        admin={selectedAdmin}
+        onBack={handleBack}
+        onHomeClick={onHomeClick}
+        onAdministrationClick={handleAdministrationClick}
+        onTechnicalTrainingClick={onTechnicalTrainingClick}
+         onTechnicalForTalentClick={onTechnicalForTalentClick}
+      />
+    )
+  }
+  //Ophaling Fiets uit Herstelling
+  if(
+    selectedAdmin&&
+    selectedAdmin.name===" Ophaling Fiets uit Herstelling"
+  ){
+    return(
+      <OphalingFietsHerstelling
+        icon={selectedAdmin.icon}
         admin={selectedAdmin}
         onBack={handleBack}
         onHomeClick={onHomeClick}
@@ -320,12 +424,11 @@ function Administration({
     )
   }
 
-
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
       style={{
-        backgroundImage: 'url("/bgfp.jpg")',
+        backgroundImage:   `url("${import.meta.env.BASE_URL}/bgfp.jpg")`,
       }}
     >
 
@@ -368,16 +471,31 @@ function Administration({
             Administration
           </h2>
 
-          <p className="mt-6 text-2xl font-bold text-gray-200">
-            What do you want to do?
+          <p className="mt-6 text-2xl font-bold text-gray-200 font-serif tracking-wide background-clip-text  bg-gradient-to-r from-red-200 to-pink-800">
+            Wat wil je doen?
           </p>
+          <div className="mt-6 flex justify-center gap-3">
+  {["Alles", "Fiets", "Kassa"].map((filter) => (
+    <button
+      key={filter}
+      onClick={() => setSelectedFilter(filter)}
+      className={`rounded-lg px-6 py-2 font-semibold transition cursor-pointer ${
+        selectedFilter === filter
+          ? "bg-blue-600 text-white shadow-md"
+          : "bg-white text-gray-800 hover:bg-gray-200"
+      }`}
+    >
+      {filter}
+    </button>
+  ))}
+</div>
 
         </div>
 
         {/* Administration cards */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
 
-          {adminTypes.map((admin) => (
+          {filteredAdminTypes.map((admin) => (
             <button
               key={admin.id}
               onClick={() => handleAdminClick(admin)}

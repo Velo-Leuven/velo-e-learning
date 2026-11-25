@@ -1,51 +1,57 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Navbar from "../components/Navbar";
 
 const HandleidingData = {
   name: "Handleiding Kassa",
 
-  video: "/media/administrations/fp/fpvideo.mp4",
+   video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
 
   steps: [
     {
       number: 1,
       title: "Kassa openen / Ga naar Kassa",
       instruction:
-        ".................",
+        "Foutjes / Hoe verwijder ik een product? Klik op [STEP:18]. Hoe annuleer ik een volledige bestelling? Klik op [STEP:19]. Hoe corrigeer ik een fout als ik de betaling al bevestigd heb? Klik op [STEP:21].  Sessie sluiten / Sessie sluiten zonder fouten klik op [STEP:22]. Sessie afsluiten met kasverschil klik op [STEP:28]. Rapporten kassa / Om de kassa-verrichtingen opnieuw te bekijken, ga naar Orders > Orders klik op [STEP:29].",
         
-      image: "/media/administrations/hk/hk1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk1.jpeg`,
     },
     {
       number: 2,
       title: "Klik op Kassa openen.",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk2.jpeg",
+        warning: "Als de kassa open is, klik dan op Hervatten.",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk2.jpeg`,
     },
     {
       number: 3,
-      title: "Voordat je de kassa kunt gebruiken, moet je de cash inhoud van de kassa invoeren.  het bedrag staat al vermeld gewoon op Kassa openen klikken. ",
+      title: "Voordat je de kassa kunt gebruiken, moet je de cash inhoud van de kassa invoeren.  Het bedrag staat al vermeld: gewoon op Kassa openen klikken. ",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk3.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk3.jpeg`,
     },
     {
       number: 4,
       title: "Verkopen en afrekenen  ",
-      instruction: "Klik op een product om ze aan de winkelwagen toe te voegen (bv. Huur + Waarborg LEV fiets). Een product kan worden opgezocht via de zoekbalk (A) en via de categorieën (B). "   
-          ,
+      instruction: "Klik op een product om ze aan de winkelwagen toe te voegen (bv. Huur + Waarborg LEV fiets). Een product kan worden opgezocht via de zoekbalk (A) en via de categorieën (B). "  , 
+         warning: "A: Scannen product, bvb. binnenband -> barcode. B: Diversen, bij uitzondering -> we gebruiken tegels enkle als er geen order van is, dus extra onderdelen, boetes, etc. Alle de rest = via Acties -> Offerte/Order.",
+          
       
-      image: "/media/administrations/hk/hk4.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/hk/hk4.jpeg`,
     },
 
     {
       number: 5,
-      title: "Om de hoeveelheid van een product te wijzigen, klik op Hvhd en voer je het gewenste aantal in (A). Om de prijs van een product in te voeren, klik op Prijs en voer je het correcte aantal in (B). Om korting toe te voegen, klik op % en voer je het gewenste percentage in (C). ",
+      title: " ",
       instruction:
-        ".................",
+        <ol className="list-[lower-alpha] pl-6">
+        <li>A: Om de hoeveelheid van een product te wijzigen, klik op Hvhd en voer je het gewenste aantal in</li>
+        <li>B: Om de prijs van een product te wijzigen (bijn nooit nodig, enkel bij 2de hands-onderdelen en boetes), klik op Prijs en voer je het correcte aantal in.</li>
+        <li>C: Om korting (meestal enkel bij persooneel =30%) toe te voegen, klik op % en voer je het gewenste percentage in.</li>
+      </ol>,
         
-      image: "/media/administrations/hk/hk5.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/hk/hk5.jpeg`,
     },
 
     {
@@ -53,31 +59,31 @@ const HandleidingData = {
       title: "Klik op Klant om een klant te selecteren of aan te maken. Zoek een bestaande klant (bv. Luce De Roover)  via de zoekbalk en klik om te selecteren (A)  als het niet meteen lukt druk op Zoek meer of klik op Aanmaken om een nieuwe klant in te voeren (B). ",
       instruction:
         ".",
-      image: "/media/administrations/hk/hk6.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk6.jpeg`,
     },
 
     {
       number: 7,
-      title: "klik op de naam van de klant",
+      title: "klik op de naam van de bestaande klant",
       instruction:
         "....................",
-      image: "/media/administrations/hk/hk7.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk7.jpeg`,
     },
 
     {
       number: 8,
-      title: "klik op Opslaan knoop",
+      title: "Op aanmaken duwen bij nieuwe klant -> klik op Opslaan van de nieuwe klant",
       instruction: ".",
-      image: "/media/administrations/hk/hk8.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk8.jpeg`,
     },
 
     {
       number: 9,
       title: "Voeg het fietsnummer toe via Acties > Klantnotitie. En klik op Toepassen.",
       instruction:
-        ".................",
+        "Extra info voor klant of boekhouder via klantnotitie toevoegen.",
         
-      image: "/media/administrations/hk/hk9.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk9.jpeg`,
     },
 
     {
@@ -86,42 +92,54 @@ const HandleidingData = {
       instruction:
         ".................",
        
-      image: "/media/administrations/hk/hk10.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk10.jpeg`,
     },
     {
       number: 11,
       title: "Ga naar de afrekenpagina door op Betaling te klikken.",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk11.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk11.jpeg`,
     },
     {
       number: 12,
       title: "Indien de klant een FACTUUR wenst, vink Factuur aan. Zo niet, ga naar de volgende stap. Bestaat de klant nog niet kan je hem aanmaken en als de klant een  BTW nummer heeft moet je BEDRIJF kiezen als klant en de gefgevens invullen. ",
       instruction:
-        ".................",
-      image: "/media/administrations/hk/hk12.jpeg",
+        <ol className="list-[lower-alpha] pl-6">  <h1 className="font-bold">Standaard aangevinkt</h1>
+        <li>Wil nieuwe klant factuur? (zonder order) = bedrijfsklant aanmaken.</li>
+        <li>Wil nieuwe klant geen factuur? (zonder order) = klant leeg laten = ok.</li>
+        <li>Al de rest heeft een order en krijgt  automatisch een factuur.</li>
+        
+      </ol>,
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk12.jpeg`,
     },
     {
       number: 13,
       title: "De naam invullen",
       instruction:
-        ".................",
-      image: "/media/administrations/hk/hk13.jpeg",
+        "BTW nummer moet erbij voor facturatie, tenzij: niet BTW-plichtig. vzw -> ondernemingsnummer.  ",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk13.jpeg`,
     },
     {
       number: 14,
-      title: "Kies de gewenste betaalmethode Kas (A). Indien een klant cash betaalt, voer het ontvangen bedrag in (bv. €250 cash), wisselgeld wordt dan automatisch berekend door ODOO. Bij payconiq kies je (voorlopig) klant account. ",
+      title: "Kies de gewenste betaalmethode Kas (A). Indien een klant cash betaalt, voer het ontvangen bedrag in (bv. €250 cash), wisselgeld wordt dan automatisch berekend door ODOO. Bij payconiq kies je (voorlopig) klant account en moet gecheckt worden via transactielijst. ",
       instruction:
-        ".................",
-      image: "/media/administrations/hk/hk14.jpeg",
+        <ol className="list-[lower-alpha] pl-6">  
+        <li>klik op payconiq als betaalwijze.</li>
+        <li>klik op transactielijst.</li>
+        <li>klik op zoeken, en check of de betaling binnenkomt.</li>
+        <li>Portaal inloggen.</li>
+        <li>Meerdere soorten betalingen (in dit voorbeeld eerst cash voor 2,50 euro).</li>
+        </ol>,
+
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk14.jpeg`,
     },
     {
       number: 15,
       title: "Kies de gewenste betaalmethode Kaart (B)",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk15.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk15.jpeg`,
     },
     {
       number: 16,
@@ -129,85 +147,92 @@ const HandleidingData = {
       instruction:
         ".................",
         
-      image: "/media/administrations/hk/hk16.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk16.jpeg`,
     },
     {
       number: 17,
       title: "Het ontvangstbewijs wordt automatisch via mail verstuurd naar de klant. Indien een factuur werd aangevraagd, wordt deze automatisch gedownload. Klik op Nieuw order om een nieuwe verkoop te starten.  ",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk17.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk17.jpeg`,
     },
     {
       number: 18,
       title: "Foutjes / Hoe verwijder ik een product?",
       instruction:
         "Een foute lijn kan gemakkelijk verwijderd worden door te dubbelklikken op het kruisje. ",
-      image: "/media/administrations/hk/hk18.jpeg",
+        warning: "Meestal niet nodig. Anuleer eerder het order en roep het order opnieuw op -> niet zomaar aanpassingen maken in kassaorders.",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk18.jpeg`,
     },
     {
       number: 19,
       title: "Hoe annuleer ik een volledige bestelling? ",
       instruction:
         "Ga naar Acties > Annuleer bestelling en klik op Ok om een volledige bestelling te annuleren.",
-      image: "/media/administrations/hk/hk19.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk19.jpeg`,
     },
     {
       number: 20,
       title: "Klik op Ok",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk20.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk20.jpeg`,
     },
     {
       number: 21,
       title: "Hoe corrigeer ik een fout als ik de betaling al bevestigd heb? ",
+      warning: "Via orders -> zoek orders -> naam invullen (als op naam of datum zoeken)-> alle actieve orders -> Betaald. klik op order -> klik op retour -> Hvd (meestal) -> er verschijnt 'Terugbetalen' -> nogeens op retour -> betaling via cash. Eens een betaling uitgevoerd is, kan je vanuit de orders van de kassa wel eenvoudig op retour klikken. Bij zo’n retour kan je dan het correcte bedrag/artikel opnieuw aanrekenen, zodat in het nieuwe order zowel de retour als nieuwe aanrekening zit. Hier kan je ook altijd de betaalwijze corrigeren (bvb een negatieve betaling via kaart toevoegen tov een cash betaling of dergelijk).",
       instruction:
-        "Eens een betaling uitgevoerd is, kan je vanuit de orders van de kassa wel eenvoudig op retour klikken. Bij zo’n retour kan je dan het correcte bedrag/artikel opnieuw aanrekenen, zodat in het nieuwe order zowel de retour als nieuwe aanrekening zit. Hier kan je ook altijd de betaalwijze corrigeren (bvb een negatieve betaling via kaart toevoegen tov een cash betaling of dergelijk). ",
+        <ol className="list-[lower-alpha] pl-6">
+        <li>Klik op de drie streepjes naast de kassanaam rechtsboven. </li>
+        <li>Klik op de hoeveelheid (in dit geval 1) en bevestig door nog eens op retour te klikken. </li>
+        <li>Klik op retour als het order dat je wil terugbetalen de juiste is.</li>
+        <li>Vul naam in als dit op klantnaam is, of op datum als deze er niet meer is in de zoekbalk, en selecteer betaald uit het dropdown menu.</li>
+      </ol>,
         
-      image: "/media/administrations/hk/hk21.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk21.jpeg`,
     },
     {
       number: 22,
       title: "Sessie sluiten   / Sessie sluiten zonder fouten ",
       instruction:
         ".",
-      image: "/media/administrations/hk/hk22.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk22.jpeg`,
     },
     {
       number: 23,
       title: "Om de kassa te sluiten, klik in het menu op Sessie sluiten.",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk23.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk23.jpeg`,
     },
     {
       number: 24,
       title: "Klik op het biljet-symbool om het eindbedrag in te geven.",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk24.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk24.jpeg`,
     },
     {
       number: 25,
       title: "Voer via de – en + de cash inhoud van de kassa in en klik op Bevestigen.",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk25.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk25.jpeg`,
     },
     {
       number: 26,
       title: "Vergeet niet op het bancontact kastje de dagtotalen en dagverrichtingen te printen en kijk na of het totaal overeenkomt.",
       instruction:
-        "Is er een verschil tussen de totalen van het bancontactkastje en odoo dan overschrijf je in odoo het bedrag met dat van het bancontact kastje Schrijf bij afsluitnotitie dat er een verschil is en stuur een mail naar facturatie@velo.be met de vermelding van de datum en het verschil in de kassa. ",
-      image: "/media/administrations/hk/hk26.jpeg",
+        "Verschil mag niet boven 20 EUR zijn. Eerst zoeken (check handleiding): Niet gevonden, >20 euro? -> open laten en melden. Niet gevonden, <20 euro? -> kassa afsluiten en melden. ",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk26.jpeg`,
     },
     {
       number: 27,
       title: "Klik vervolgens op Sessie sluiten.",
       instruction:
         ".................",
-      image: "/media/administrations/hk/hk27.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk27.jpeg`,
     },
     {
       number: 28,
@@ -249,92 +274,36 @@ wachtrekening te boeken:</li>
       </ol>
     </>
   ),
-      image: "/media/administrations/hk/hk28.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk28.jpeg`,
     },
+    
     {
       number: 29,
-      title: "Klik hiervoor bij het afsluiten van de kassa op ‘geld in/uit’.",
-      instruction:
-        ".....",
-      image: "/media/administrations/hk/hk29.jpeg",
-    },
-    {
-      number: 30,
-      title: "Klik bij een kastekort op ‘geld uit’, of bij een kasoverschot op ‘geld in’. Vul het bedrag aan . Typ een reden. Vermeld zeker de datum van kassa afsluiting, tekort omwille van vermoedelijke reden, … Hoe meer info je hier meegeeft, hoe beter. Klik op bevestigen. ",
-      instruction:
-       <ol className="list-[lower-alpha] pl-6">   
-        <li>Het kasverschil wordt nu boekhoudkundig niet onmiddellijk als betalingsverschil geboekt, 
-maar wordt op een wachtrekening geplaatst. Typ bij asluitingsnotitie dat er een kasverschil is en vermeld hoeveel. </li>
-<li>Sluit de sessie.</li>
-        <li>
-           <ol className="list-decimal pl-0"><h1 className="font-bold">De dag nadien zoek je verder naar het verschil. Wanneer je het verschil gevonden hebt:  </h1>
-            <li> Open een nieuwe kassa sessie, en geef de ontbrekende verrichtingen van de dag voordien in.</li>
-            <li><ol className="list-none pl-0">
-              
-              Sluit de sessie.
-<li>Je zal zien dat er opnieuw een verschil zichtbaar wordt, maar in de 
-tegenovergestelde richting als de dag voordien. Dit komt omdat de boeking ‘geld in 
-/geld uit’ die de dag voordien gebeurde nog tegengeboekt moet worden. 
-</li>
-
-
-</ol>
-            </li>
-
-
-
-
-           </ol>
-
-
-
-        </li>
-      
-      </ol>,
-      image: "/media/administrations/hk/hk30.jpeg",
-    },
-    {
-      number: 31,
-      title: "Doe het tegenovergestelde als de dag voordien (geld in/geld uit), en geef als reden mee ‘correctie kassa datum dd/mm/jjjj’ en klik op bevestigen ",
-      instruction:
-        ".",
-      image: "/media/administrations/hk/hk31.jpeg",
-    },
-    {
-      number: 32,
-      title: "Voeg een afsluitingsnotitie toe waaruit duidelijk is dat de transacties in de kassa sessie te maken hebben met de dag voordien. In de boekhouding zal de transactie immers op de datum van afsluiting geboekt worden in plaats van op de datum van de transactie. ",
-      instruction:
-         <ol className="list-[lower-alpha] pl-6">   
-        <li>Klik op sessie sluiten om de kassa sessie af te sluiten . </li>
-<li>Begin een nieuwe sessie voor de kassaverrichtingen van de huidige dag.</li> </ol>,
-      image: "/media/administrations/hk/hk32.jpeg",
-    },
-    {
-      number: 33,
       title: "Rapporten kassa / Om de kassa-verrichtingen opnieuw te bekijken, ga naar Orders > Orders. ",
       instruction:
         ".",
-      image: "/media/administrations/hk/hk33.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/hk/hk33.jpeg`,
     },
     {
-      number: 34,
+      number: 30,
       title: "Via de zoekbalk, groepeer op Kassa.",
       instruction:
         ".",
-      image: "/media/administrations/hk/hk34.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/hk/hk34.jpeg`,
     },
     {
-      number: 35,
+      number: 31,
       title: "Kassa",
       instruction:
         ".",
-      image: "/media/administrations/hk/hk35.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/hk/hk35.jpeg`,
     }
     
   ],
 };
 
 function HandleidingKassa({
+  icon,
   admin,
   onBack,
   onHomeClick,
@@ -344,6 +313,13 @@ function HandleidingKassa({
 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = HandleidingData.steps[currentStep];
 
@@ -358,10 +334,7 @@ function HandleidingKassa({
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -372,10 +345,7 @@ function HandleidingKassa({
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -388,11 +358,40 @@ function HandleidingKassa({
       setStepInput(stepNumber);
     }
   };
+  const renderInstruction = (instruction) => {
+      // If instruction is JSX or another React element, display it directly
+      if (typeof instruction !== "string") {
+        return instruction;
+      }
+    
+      const parts = instruction.split(/(\[STEP:\d+\])/g);
+    
+      return parts.map((part, index) => {
+        const match = part.match(/\[STEP:(\d+)\]/);
+    
+        if (match) {
+          const stepNumber = Number(match[1]);
+    
+          return (
+            <button
+              key={index}
+              type="button"
+              onClick={() => goToStep(stepNumber)}
+              className="text-blue-600 underline font-semibold hover:text-blue-800 cursor-pointer"
+            >
+              Step {stepNumber}
+            </button>
+          );
+        }
+    
+        return <React.Fragment key={index}>{part}</React.Fragment>;
+      });
+    };
 
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+ style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
 
       {/* Navbar */}
@@ -458,7 +457,7 @@ function HandleidingKassa({
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -492,7 +491,7 @@ function HandleidingKassa({
 
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -558,9 +557,9 @@ function HandleidingKassa({
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
-              {step.instruction}
-            </p>
+            <div className="mt-3 text-lg leading-8 text-gray-600">
+              {renderInstruction(step.instruction)}
+            </div>
 
           </div>
 
@@ -574,9 +573,9 @@ function HandleidingKassa({
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
 

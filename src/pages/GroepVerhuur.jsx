@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Navbar from "../components/Navbar";
 
 const GroepVerhuurData = {
   name: "Groep Verhuur",
 
-  video: "/media/administrations/fp/fpvideo.mp4",
+   video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
 
   steps: [
     {
       number: 1,
       title: "Klik op Abonnementen knop",
-      instruction:
-        ".................",
+        instruction:
+        
+  "Groepsverhuur inleveren? Klik op [STEP:29]. Fiets beschadigd, verloren of gestolen? Klik op [STEP:37]. Transportkosten aanrekenen? Klik op [STEP:51]. ",
         warning: "Vóór je begint moet je de klant aanmaken in Odoo, met de volledige registratie (via Contact > Nieuw).",
-      image: "/media/administrations/gv/gv1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv1.jpeg`,
     },
     {
       number: 2,
       title: "klik op Nieuw knop",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv2.jpeg`,
     },
     {
       number: 3,
       title: "Naam van de klant invoeren",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv3.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv3.jpeg`,
     },
     {
       number: 4,
@@ -52,6 +53,7 @@ const GroepVerhuurData = {
            
         
           </ol></li>
+          <li>Zie Pagina 5 voorbeeld</li>
            
         
           </ol>
@@ -61,16 +63,16 @@ const GroepVerhuurData = {
           
           ,
       
-      image: "/media/administrations/gv/gv4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv4.jpeg`,
     },
 
     {
       number: 5,
-      title: "Offertesjabloon ",
+      title: "Offertesjabloon samenvatting ",
       instruction:
         ".................",
         warning: "Voor groepsverhuur gebruiken we uitsluitend de offertesjablonen die eindigen op ‘KT’.",
-      image: "/media/administrations/gv/gv5.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv5.jpeg`,
     },
 
     {
@@ -78,7 +80,7 @@ const GroepVerhuurData = {
       title: "Aantal fietsen invoeren",
       instruction:
         "In het voorbeeld hierna worden stadsfietsen als voorbeeld gebruikt. Om een voorbeeld te zien van gemengd verhuur.",
-      image: "/media/administrations/gv/gv6.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv6.jpeg`,
     },
 
     {
@@ -86,14 +88,14 @@ const GroepVerhuurData = {
       title: "Kies Niet Student",
       instruction:
         "....................",
-      image: "/media/administrations/gv/gv7.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv7.jpeg`,
     },
 
     {
       number: 8,
       title: "Kies Huurperiode",
       instruction:
-       <ol className="list-disc pl-6"> <h1 className="font-bold">Kies bij herhalend plan voor  de overeenkomende huurtermijn en zijn er</h1>
+       <ol className="list-disc pl-6"> <h1 className="font-bold">Kies bij herhalend plan voor  de overeenkomende huurtermijn. <h2>Zijn er:</h2></h1>
 
             <li>Minder dan 5 stadsfietsen (ongeacht dames of herenmodel), kies dan KT – X dagen.</li>
             <li> 5 of meer stadsfietsen (ongeacht dames of herenmodel), kies dan KT (5+) – X dagen.</li>
@@ -103,7 +105,7 @@ const GroepVerhuurData = {
            
         
           </ol>,
-      image: "/media/administrations/gv/gv8.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv8.jpeg`,
     },
 
     {
@@ -112,7 +114,7 @@ const GroepVerhuurData = {
       instruction:
         ".................",
         
-      image: "/media/administrations/gv/gv9.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv9.jpeg`,
     },
 
     {
@@ -121,42 +123,42 @@ const GroepVerhuurData = {
       instruction:
         ".................",
        
-      image: "/media/administrations/gv/gv10.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv10.jpeg`,
     },
     {
       number: 11,
-      title: "Klik op Groepsverhuur knop",
+      title: "Klik op knop 'Groepsverhuur ophalen'",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv11.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv11.jpeg`,
     },
     {
       number: 12,
       title: "Scan de QR code van de Fiets",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv12.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv12.jpeg`,
     },
     {
       number: 13,
       title: "Klik op Ophalen knop",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv13.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv13.jpeg`,
     },
     {
       number: 14,
       title: "Klik op Ok knop",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv14.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv14.jpeg`,
     },
     {
       number: 15,
       title: "klik op Abonnementennummer",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv15.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv15.jpeg`,
     },
     {
       number: 16,
@@ -164,35 +166,35 @@ const GroepVerhuurData = {
       instruction:
         ".................",
         warning: "Reken het abonnement af in de kassa.",
-      image: "/media/administrations/gv/gv16.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv16.jpeg`,
     },
     {
       number: 17,
       title: "In het voorbeeld hierna worden een voorbeeld gegeven van gemengd fietsenverhuur. ",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv17.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv17.jpeg`,
     },
     {
       number: 18,
       title: "Pas de Hoeveelheden aan",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv18.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv18.jpeg`,
     },
     {
       number: 19,
       title: "Kies Niet Student",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv19.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv19.jpeg`,
     },
     {
       number: 20,
       title: "Kies De Huurperiode",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv20.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv20.jpeg`,
     },
     {
       number: 21,
@@ -200,7 +202,7 @@ const GroepVerhuurData = {
       instruction:
         ".................",
         warning: "Vanaf hier is het hetzelfde als andere verhuur (vanaf de stap ‘digitaal tekenen’)",
-      image: "/media/administrations/gv/gv21.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv21.jpeg`,
     },
     {
       number: 22,
@@ -215,182 +217,182 @@ const GroepVerhuurData = {
            
         
           </ol>,
-      image: "/media/administrations/gv/gv22.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv22.jpeg`,
     },
     {
       number: 23,
       title: "Klik op Verzenden knop",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv23.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv23.jpeg`,
     },
     {
       number: 24,
       title: "Offerte is aangemaakt",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv24.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv24.jpeg`,
     },
     {
       number: 25,
       title: "Bewijs afdrukken voor ontvangst / levering",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv25.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv25.jpeg`,
     },
     {
       number: 26,
       title: "Klik op Offerte / Order knop",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv26.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv26.jpeg`,
     },
     {
       number: 27,
       title: "Order Document is aangemaakt",
       instruction:
         ".................",
-      image: "/media/administrations/gv/gv27.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv27.jpeg`,
     },
     {
       number: 28,
       title: "Abonnement is aangemaakt",
       instruction:
         "Als de klant bevestigd heeft, dan kan je terug naar het abonnement gaan en de fietsen toevoegen, zoals gewoonlijk.",
-      image: "/media/administrations/gv/gv28.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv28.jpeg`,
     },
     {
       number: 29,
       title: "Groepsverhuur inleveren",
       instruction:
         ".....",
-      image: "/media/administrations/gv/gv29.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv29.jpeg`,
     },
     {
       number: 30,
       title: "Scannen van de QR code van de fiets",
       instruction:
         "...",
-      image: "/media/administrations/gv/gv30.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv30.jpeg`,
     },
     {
       number: 31,
       title: "Klik op Groepsverhuur Inleveren knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv31.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv31.jpeg`,
     },
     {
       number: 32,
       title: "Klik op Bevestigen  zonder Schade knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv32.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv32.jpeg`,
     },
     {
       number: 33,
       title: "Klik op Afsluiten knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv33.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv33.jpeg`,
     },
     {
       number: 34,
       title: "Klik op Reden",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv34.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv34.jpeg`,
     },
     {
       number: 35,
       title: "Kies de reden voor het afsluiten van het abonnement",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv35.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv35.jpeg`,
     },
     {
       number: 36,
       title: "klik op Indienen knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv36.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv36.jpeg`,
     },
     {
       number: 37,
       title: "Fiets beschadigd, verloren of gestolen? Klik op Groepsverhuur Inleveren knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv37.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv37.jpeg`,
     },
     {
       number: 38,
       title: "Scannen van de QR code van de fiets",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv38.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv38.jpeg`,
     },
     {
       number: 39,
       title: "klik op Serienummers van de fiets",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv39.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv39.jpeg`,
     },
     {
       number: 40,
       title: "Klik op Groepsverhuur Inleveren knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv40.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv40.jpeg`,
     },
     {
       number: 41,
       title: "klik op Bevestigen met Schade knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv41.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv41.jpeg`,
     },
     {
       number: 42,
       title: "klik op Regel Toevoegen",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv42.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv42.jpeg`,
     },
     {
       number: 43,
       title: "kies Verloren / Gestolen Fiets",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv43.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv43.jpeg`,
     },
     {
       number: 44,
       title: "Klik op Bevestigen knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv44.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv44.jpeg`,
     },
     {
       number: 45,
       title: "klik op Abonnementennummer",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv45.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv45.jpeg`,
     },
     {
       number: 46,
       title: "Klik op Opgehaald knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv46.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv46.jpeg`,
     },
     {
       number: 47,
       title: "Klik op Rapporteer Diefstal knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv47.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv47.jpeg`,
     },
     {
       number: 48,
@@ -398,7 +400,7 @@ const GroepVerhuurData = {
       instruction:
         ".",
         warning: "Zoek de klant op in de kassa en reken de schade of het verlies van de fiets af.",
-      image: "/media/administrations/gv/gv48.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/gv/gv48.jpeg`,
     },
     {
       number: 49,
@@ -406,14 +408,14 @@ const GroepVerhuurData = {
       instruction:
         ".",
         warning: "Aangifte opslaan bij het abonnement (chatter bovenaan).",
-      image: "/media/administrations/gv/gv49.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/gv/gv49.jpeg`,
     },
     {
       number: 50,
       title: "Klik op Voeg Bestanden toe",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv50.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv50.jpeg`,
     },
     {
       number: 51,
@@ -438,7 +440,7 @@ DUS: nog toe te voegen: 8 x ‘transportKT verhuur (/km)’
            
         
           </ol>,
-      image: "/media/administrations/gv/gv51.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv51.jpeg`,
     },
     {
       number: 52,
@@ -446,84 +448,84 @@ DUS: nog toe te voegen: 8 x ‘transportKT verhuur (/km)’
       instruction:
         "Klik op Acties Knop",
         warning: "Controleer VOORAF of het abonnement op naam van een particuliere klant of een bedrijf moet gemaakt worden. Dit is van groot belang voor de facturatie en kan achteraf niet meer aangepast worden!.",
-      image: "/media/administrations/gv/gv52.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv52.jpeg`,
     },
     {
       number: 53,
       title: "Zoek de klant op zijn naam",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv53.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv53.jpeg`,
     },
     {
       number: 54,
       title: "Klik op zijn info",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv54.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/gv/gv54.jpeg`,
     },
     {
       number: 55,
       title: "Klik op Reden de order af",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv55.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/gv/gv55.jpeg`,
     },
     {
       number: 56,
       title: "Klik op Acties knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv56.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/gv/gv56.jpeg`,
     },
     {
       number: 57,
       title: "Klik op Algemene notitie",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv57.jpeg",
+      image:  `${import.meta.env.BASE_URL}/media/administrations/gv/gv57.jpeg`,
     },
     {
       number: 58,
       title: "Bestelnummer van de klant invoeren",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv58.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv58.jpeg`,
     },
     {
       number: 59,
       title: "Klik op Betaling knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv59.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv59.jpeg`,
     },
     {
       number: 60,
       title: "Klik op Bevestigen knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv60.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv60.jpeg`,
     },
     {
       number: 61,
       title: "Facturen met bestelbonnummer maken voor bedrijfsklanten",
       instruction:
         "Tijdens het opmaken van het abonnement kan het bestelbonnummer toegevoegd worden onder de tab ‘Overige Info’.",
-      image: "/media/administrations/gv/gv61.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv61.jpeg`,
     },
     {
       number: 62,
       title: "Vul het bestelbonnummer in bij ‘Referentie klant’",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv62.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv62.jpeg`,
     },
     {
       number: 63,
       title: "Verzend de factuur naar de klant",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv63.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv63.jpeg`,
     },
     
     {
@@ -531,41 +533,42 @@ DUS: nog toe te voegen: 8 x ‘transportKT verhuur (/km)’
       title: "Bevestigde abonnementen voor groepsverhuur aanpassen bij ophaling",
       instruction:
         "Het gebeurt wel eens dat een klant een aantal fietsen wil huren en op het moment van ophaling er meer/minder fietsen nodig zijn dan aangevraagd. Je kan het abonnement nog op de volgende manier aanpassen. Klik op Annuleren knop",
-      image: "/media/administrations/gv/gv64.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv64.jpeg`,
     },
     {
       number: 65,
       title: "klik op Annuleren knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv65.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv65.jpeg`,
     },
     {
       number: 66,
       title: "Klik op Zie op Offerte knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv66.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv66.jpeg`,
     },
     {
       number: 67,
       title: "Hoevelheid invoeren",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv67.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv67.jpeg`,
     },
     {
       number: 68,
       title: "Klik op Digitaal handtekenen knop",
       instruction:
         ".",
-      image: "/media/administrations/gv/gv68.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/gv/gv68.jpeg`,
     },
     
   ],
 };
 
 function GroepVerhuur({
+  icon,
   admin,
   onBack,
   onHomeClick,
@@ -575,6 +578,13 @@ function GroepVerhuur({
 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = GroepVerhuurData.steps[currentStep];
 
@@ -589,10 +599,7 @@ function GroepVerhuur({
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -603,10 +610,7 @@ function GroepVerhuur({
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -619,11 +623,41 @@ function GroepVerhuur({
       setStepInput(stepNumber);
     }
   };
+ const renderInstruction = (instruction) => {
+  // If instruction is JSX or another React element, display it directly
+  if (typeof instruction !== "string") {
+    return instruction;
+  }
+
+  const parts = instruction.split(/(\[STEP:\d+\])/g);
+
+  return parts.map((part, index) => {
+    const match = part.match(/\[STEP:(\d+)\]/);
+
+    if (match) {
+      const stepNumber = Number(match[1]);
+
+      return (
+        <button
+          key={index}
+          type="button"
+          onClick={() => goToStep(stepNumber)}
+          className="text-blue-600 underline font-semibold hover:text-blue-800 cursor-pointer"
+        >
+          Step {stepNumber}
+        </button>
+      );
+    }
+
+    return <React.Fragment key={index}>{part}</React.Fragment>;
+  });
+};
+ 
 
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+   style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
 
       {/* Navbar */}
@@ -689,7 +723,7 @@ function GroepVerhuur({
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -723,7 +757,7 @@ function GroepVerhuur({
 
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -789,10 +823,9 @@ function GroepVerhuur({
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
-              {step.instruction}
-            </p>
-
+           <div className="mt-3 text-lg leading-8 text-gray-600">
+  {renderInstruction(step.instruction)}
+</div>
           </div>
 
           {/* Warning */}
@@ -805,9 +838,9 @@ function GroepVerhuur({
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
 

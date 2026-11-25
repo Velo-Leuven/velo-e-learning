@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 const fietswisselenData = {
@@ -7,7 +7,7 @@ const fietswisselenData = {
 
  
 
-  video: "/media/administrations/fpvideo.mp4",
+  video: `${import.meta.env.BASE_URL}media/administrations/fw/fwvideo.mp4`,
 
   steps: [
     {
@@ -16,7 +16,7 @@ const fietswisselenData = {
       instruction:
         ".......................",
         
-      image: "/media/administrations/fw/fw1.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw1.jpeg`,
     },
 
     {
@@ -24,7 +24,7 @@ const fietswisselenData = {
       title: "Open bestaande abonnement",
       instruction:
         ".................",
-      image: "/media/administrations/fw/fw2.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw2.jpeg`,
     },
 
     {
@@ -32,76 +32,103 @@ const fietswisselenData = {
       title: "Voeg extra orderregel van hetzelfde type fiets als de oorspronkelijke type fiets toe met hoeveelheid -1",
       instruction:
         ".................",
-        image: "/media/administrations/fw/fw3.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw3.jpeg`,
     },
 
     {
       number: 4,
       title: "Sluit het bestaande abonnement daarna af",
       instruction:
-        "....................",
-      warning:"Betaal de waarborg niet terug in de kassa na deze stap",
-      image: "/media/administrations/fw/fw4.jpeg",
+        <ul className="list-disc pl-5"><h1 className="text-2xl font-bold">Afsluiten doen in cash (Reden: fietswissel upgrade)</h1>
+     
+       <li><ol className="list-decimal pl-2"><h4 className="text-2xl font-bold">Wel afrekenen</h4>
+       <li>kassa tabblad</li>
+       <li>Order afrekenen</li>
+       <li>Kopieer S-nummer boven klant vanuit contract</li>
+      
+       </ol></li>
+      
+         
+       </ul>,
+     
+      image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw4.jpeg`,
     },
-
     {
       number: 5,
-      title: "Maak nieuw verhuurorder voor de nieuwe fiets (Velo7/LeV)",
-      instruction: "....................",
-    //   <div><h1 className="text-lg font-bold">Vervangfiets huren na diefstal</h1>
-    //   <ul className="list-disc pl-5">
-    //     <li>Maak een nieuw verhuurorder voor de nieuwe fiets.</li>
-    //     <li>Maak een nieuw abonnement voor de nieuwe fiets, met dezelfde start- en einddatum als op het abonnement van de gestolen fiets.</li>
-    //     <li>Zet op de regel voor de huur van de fiets 100% korting (zo moet de klant niet opnieuw betalen voor de huur, maar betaalt hij/zij wel opnieuw voor de waarborg).</li>
-    //     <li>Reken het nieuwe abonnement af in de kassa.</li>
+      title: "Klik op Kassa knop",
+      instruction:
+       <ol className="list-decimal pl-2"><h4 className="text-2xl font-bold"></h4> 
+       <li>In kassa - acties- Orders</li>
+       <li>Plak de S-nummer op Order</li>
+       
         
-    //   </ul></div>,
-
-      image: "/media/administrations/fw/fw5.jpeg",
+       <li> Nu van toepassing → Twee dingen te veel (Huur en Waarborg) → Moeten verwijderd worden</li>
+       <li>Terugbetaling in KAS</li>
+       </ol>
+         
+       ,
+     
+      image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw5.jpeg`,
     },
 
     {
       number: 6,
+      title: "Maak nieuw verhuurorder voor de nieuwe fiets (Velo7/LeV)",
+      instruction: "....................",
+   
+
+      image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw6.jpeg`,
+    },
+
+    {
+      number: 7,
       title: "Maak nieuw abonnement voor de nieuwe fiets (Velo7/LeV) met dezelfde start- en einddatum als het oude abonnement.",
       instruction:
         ".................",
-        image: "/media/administrations/fw/fw6.jpeg",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw7.jpeg`,
     },
     {
-        number: 7,
-        title:  <div><h1 className="text-2xl font-bold">Zoek de klant op op naam en vergelijk de ordernummers!</h1>
-      <ul className="list-disc pl-5">
+        number: 8,
+        title:   <ul className="list-disc pl-5"><h1 className="text-2xl font-bold">Zoek de klant op op naam en vergelijk de ordernummers!</h1>
+     
        <li>Het ene komt overeen met het oude abonnement.</li>
        <li>Het andere komt overeen met het nieuwe abonnement.</li>
          
-       </ul></div>,
-        warning:
-       <div><h1 className="text-2xl font-bold">Let op bij het afrekenen!. Er moeten 3 dingen in de kassa gezet worden:
-</h1>
-      <ul className="list-disc pl-5">
-       <li>Het nieuwe abonnement.</li>
-       <li>Het oude abonnement.</li>
-       <li>De waarborg van de ingeleverde fiets van het oude abonnement.</li>
-         
-       </ul></div>,
+       </ul>,
+       
         instruction:
-          ".................",
-        image: "/media/administrations/fw/fw7.jpeg",
+          "Nieuw contract (misschien wisselkost). Na 2 weken -> Verhuur Veiling -> Administratief kost wissel -> 5 euro",
+        image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw8.jpeg`,
     },
     {
-      number: 8,
+      number: 9,
       title: "Reken beide orders en de waarborg van het oude abonnement samen af.",
       instruction:
-        ".................",
-        image: "/media/administrations/fw/fw8.jpeg",
+        " Er is al geldt teurgbetaald. Dit komt nu teurg",
+        warning :<ul className="list-disc pl-5"><h1 className="text-2xl font-bold">Praktisch: Het teurgbetaalde bedrag rekenen wij af met CASH
+</h1>
+      
+       <li>Kassa Veiling 1  → Bedrag vorig contract + Nieuw contract .</li>
+       <li>Resterend bedrag is altijd 80 euro + misschien boetewissel na 2 weken.</li>
+       
+         
+       </ul>,
+        image: `${import.meta.env.BASE_URL}/media/administrations/fw/fw9.jpeg`,
     }
    
   ],
 };
 
-function FietsWisselen({ admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
+function FietsWisselen({ icon, admin, onBack ,onHomeClick,onAdministrationClick,onTechnicalTrainingClick, onTechnicalForTalentClick,}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput]=useState(currentStep+1);
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, []); 
 
   const step = fietswisselenData.steps[currentStep];
 
@@ -116,10 +143,7 @@ function FietsWisselen({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
       setCurrentStep(next);
       setStepInput(next+1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      
     }
   };
 
@@ -128,10 +152,7 @@ function FietsWisselen({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
       const previous=currentStep - 1;
       setCurrentStep(previous);
       setStepInput(previous+1);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -149,7 +170,7 @@ function FietsWisselen({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
   return (
     <div 
     className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-    style={{backgroundImage: 'url(/bgfh.jpg)'}}
+   style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
     >
      {/* Navbar */}
      <Navbar
@@ -197,11 +218,11 @@ function FietsWisselen({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
-           <h1 className="mt-5 text-4xl font-bold text-gray-900">
+           <h1 className="mt-5 text-4xl font-bold text-red-500">
               {admin.name}
             </h1>
           )}
@@ -230,7 +251,7 @@ function FietsWisselen({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
         {currentStep === 0 && fietswisselenData.video && (
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -302,13 +323,13 @@ function FietsWisselen({ admin, onBack ,onHomeClick,onAdministrationClick,onTech
           {step.warning && (
             <div className="mt-6 rounded-xl border border-yellow-200 bg-yellow-50 p-5">
 
-              <p className="font-semibold text-yellow-800">
+              <div className="font-semibold text-yellow-800">
                 ⚠️ Important
-              </p>
+              </div>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
           )}

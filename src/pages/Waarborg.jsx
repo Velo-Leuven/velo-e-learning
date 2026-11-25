@@ -1,121 +1,189 @@
-import React, { useState } from "react";
+import React, { useState , useEffect  } from "react";
 
 import Navbar from "../components/Navbar";
 
 const WaarborgData = {
   name: "Waarborg Teurgstorten",
 
-  video: "/media/administrations/fp/fpvideo.mp4",
+ video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
 
   steps: [
     {
       number: 1,
-      title: "Klik op Afsluiten knop",
+      title: "Fiets-gebruiker",
       instruction:
-        <ol className="list-decimal pl-6"> <h1 className="font-bold">Contrroleer:</h1>
-            <li>De status van de fiets moet ‘Geretourneerd’ zijn
-(dit wordt gedaan door de technieker bij het inleveren van de fiets).</li>
-            <li>Beëindig het abonnement en noteer het rekeningnummer van de klant bij "Partner Bank".</li>
+       
+          "Formulier inleverbewijs scannen."
+
+           
            
             
-          </ol>,
-      image: "/media/administrations/wb/wb1.jpeg",
+            ,
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb1.jpeg`,
     },
     {
       number: 2,
-      title: "Kies de reden van de terugbetaling",
+      title: "In het verhuurorder:",
       instruction:
-        ".................",
-      image: "/media/administrations/wb/wb2.jpeg",
+        <ol className="list-decimal pl-6"> 
+          
+             <li>Klik op degene met verhuurstatus 'opgehaald.</li>
+            <li>Vraag naam klant ter bevestiging.</li>
+            
+           
+            
+            </ol>,
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb2.jpeg`,
     },
     {
       number: 3,
-      title: "Rekeningnummer van de klant invullen",
+      title: "In Contact → ", 
       instruction:
-        ".................",
-      image: "/media/administrations/wb/wb3.jpeg",
+       <ol className="list-decimal pl-6">
+              <li>Check fietsnummer.</li>
+
+            <li>Klik op naam klant.</li>
+            </ol>,
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb3.jpeg`,
     },
     {
       number: 4,
-      title: "Klik op Kassa knop",
+      title: "Klik op abonnementen ",
       instruction:
         ".................",
-      
-      image: "/media/administrations/wb/wb4.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb4.jpeg`,
     },
-
     {
+      
       number: 5,
-      title: "Klik op Verkoop hervatten knop",
+      title: "Klik op Afsluiten knop",
       instruction:
-        ".................",
-      image: "/media/administrations/wb/wb5.jpeg",
+        <ol className="list-decimal pl-6"> <h1 className="font-bold">Controleer:</h1>
+            <li>→ Check S-nummer om te bevestigen (→ op inleverbewijs).</li>
+            <li>De status van de fiets moet ‘Geretourneerd’ zijn
+(dit wordt gedaan door de technieker bij het inleveren van de fiets).</li>
+            <li>Klik op de afsluiten knop.</li>
+           
+            
+          </ol>,
+         
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb5.jpeg`,
     },
-
     {
       number: 6,
-      title: "Klik op Klant knop",
+      title: "Kies de reden van de terugbetaling",
       instruction:
         ".................",
-      image: "/media/administrations/wb/wb6.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb6.jpeg`,
     },
-
     {
       number: 7,
-      title: "Klant info invullen",
+      title: "Rekeningnummer van de klant invullen",
       instruction:
-        "....................",
-      image: "/media/administrations/wb/wb7.jpeg",
+        "...........",
+         warning: <ol className="list-decimal pl-6"> <h1 className="font-bold"></h1>
+            <li>Kijk naar einddatum, is deze persoon op tijd? (optijd= binnen 14 dagen na einddatum)  → afsluiten</li>
+            <li>Afsluiten: waarborg terug op twee manieren
+               <ol className="list-decimal pl-6"> <h1 className="font-bold">Klant overschrijving:</h1>
+                <li>Vul IBAN (moet Europees zijn) in en druk op TAB</li>
+                <li>Sleep het venster naar het tweede scherm, en laat controleren door de klant.</li>
+                <li>Ok?, druk op "Opslaan en sluiten"→ indienen.</li>
+
+
+               </ol>
+<ol className="list-decimal pl-6"> <h1 className="font-bold">Cash=Kassa (check eerst waarom) vooral voor niet-Europees:</h1>
+                <li>Klik op waarborg cash terugbetalen.</li>
+                <li>Vraag klant om studentenkaart, ID kaart of paspoort...</li>
+                <li>Papier invullen, laten tekenen, inleverbewijs aan vast nieten.</li>
+               
+</ol>
+
+
+            </li>
+            </ol>,
+
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb7.jpeg`,
     },
+    
 
     {
       number: 8,
-      title: "Klik op Klant info",
+      title: "Klik op Klant knop",
       instruction:
-        ".............",
-      image: "/media/administrations/wb/wb8.jpeg",
+        <ol className="list-decimal pl-6"> <h1 className="font-bold">Ga naar tabblad Odoo Pos= kassa:</h1>
+            <li>Klik op Orders.  <h1 className="font-bold">→ staat er 'te factureren'?</h1>
+            <ol>
+              <li>Ja, klik open = pech → ga naar stap 7 (Acties, waarborg terugbetalen).</li>
+              <li>Nee, heel goed, geen kosten → klik op naam (klant) → naam invullen → ga naar stap 7 (Acties, waarborg terugbetalen).</li>
+
+            </ol>
+            
+            </li>
+           
+           
+            
+          </ol>,
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb8.jpeg`,
     },
 
     {
       number: 9,
-      title: "Klik op Acties knop",
+      title: "Klant info invullen",
       instruction:
-        ".................",
-        
-      image: "/media/administrations/wb/wb9.jpeg",
+        "Acties, waarborg terugbetalen",
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb9.jpeg`,
     },
 
     {
       number: 10,
-      title: "Klik op Waarborg Teurgbetaling knop",
+      title: "Klik op Klant info",
+      instruction:
+        "Op manier van afsluiting.",
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb10.jpeg`,
+    },
+
+    {
+      number: 11,
+      title: "Klik op Acties knop",
+      instruction:
+        ".................",
+        
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb11.jpeg`,
+    },
+
+    {
+      number: 12,
+      title: "Klik op Waarborg Terugbetaling knop",
       instruction:
         ".................",
         warning: <ol className="list-decimal pl-6"> <h1 className="font-bold">Contrroleer:</h1>
-            <li>Controleer ALTIJD of de klant nog openstaande orders heerft onder de knoop <h1 className="font-bold">'Offer/Order'.</h1></li>
+            <li>Controleer ALTIJD of de klant nog openstaande orders heerft onder de knop <h1 className="font-bold">'Offer/Order'.</h1></li>
             <li>Als er schade aan de fiets was, heeft de technieker een schadeorder aangemaakt dat hier afgerekend moet worden. Dit bedrag wordt dan automatisch afgetrokken van de waarborg.</li>
            
             
           </ol>,
-      image: "/media/administrations/wb/wb10.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb12.jpeg`,
     },
     {
-      number: 11,
+      number: 13,
       title: "Klik op Betaling knop",
       instruction:
         ".................",
-      image: "/media/administrations/wb/wb11.jpeg",
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb13.jpeg`,
     },
     {
-      number: 12,
+      number: 14,
       title: "Kies de Betaalmethode en klik op Bevestigen knop",
       instruction:
-        ".................",
-      image: "/media/administrations/wb/wb12.jpeg",
+        "....",
+        warning: "Via Cash ook mogelijk",
+      image: `${import.meta.env.BASE_URL}/media/administrations/wb/wb14.jpeg`,
     }
   ],
 };
 
 function Waarborg({
+  icon,
   admin,
   onBack,
   onHomeClick,
@@ -125,7 +193,14 @@ function Waarborg({
 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepInput, setStepInput] = useState(currentStep + 1);
-
+  useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant",
+  });
+}, []); 
+ 
   const step = WaarborgData.steps[currentStep];
 
   const handleBack = () => {
@@ -139,10 +214,7 @@ function Waarborg({
       setCurrentStep(next);
       setStepInput(next + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      
     }
   };
 
@@ -153,10 +225,7 @@ function Waarborg({
       setCurrentStep(previous);
       setStepInput(previous + 1);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    
     }
   };
 
@@ -173,7 +242,7 @@ function Waarborg({
   return (
      <div
   className="min-h-screen bg-cover bg-center bg-no-repeat px-6 py-12"
-  style={{ backgroundImage: 'url("/bgfh.jpg")' }}
+   style={{ backgroundImage: `url("${import.meta.env.BASE_URL}/bgfh.jpg")` }}
 >
 
       {/* Navbar */}
@@ -239,7 +308,7 @@ function Waarborg({
         <div className="text-center">
 
           <div className="text-6xl">
-            🚲
+            {icon}
           </div>
 
           {admin && (
@@ -273,7 +342,7 @@ function Waarborg({
 
           <div className="mt-10">
 
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            <h2 className="mb-4 text-xl font-semibold text-red-600">
               🎥 Instructional Video
             </h2>
 
@@ -339,9 +408,9 @@ function Waarborg({
               Instructions
             </h3>
 
-            <p className="mt-3 text-lg leading-8 text-gray-600">
+            <div className="mt-3 text-lg leading-8 text-gray-600">
               {step.instruction}
-            </p>
+            </div>
 
           </div>
 
@@ -355,9 +424,9 @@ function Waarborg({
                 ⚠️ Important
               </p>
 
-              <p className="mt-2 text-yellow-700">
+              <div className="mt-2 text-yellow-700">
                 {step.warning}
-              </p>
+              </div>
 
             </div>
 
