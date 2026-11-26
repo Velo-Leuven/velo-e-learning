@@ -7,7 +7,7 @@ const VerkooporderData = {
 
  
 
-   video: `${import.meta.env.BASE_URL}media/administrations/fp/fpvideo.mp4`,
+   video: `${import.meta.env.BASE_URL}media/administrations/fp/video.mp4`,
 
   steps: [
     {
@@ -22,7 +22,7 @@ const VerkooporderData = {
 
     {
       number: 2,
-      title: "Klik op  'Herstelling FPA - Particulier' tab",
+      title: "Klik op 'Herstelling FPA - Particulier' tab",
       instruction:
         ".................",
       image: `${import.meta.env.BASE_URL}/media/administrations/va/va2.jpeg`,

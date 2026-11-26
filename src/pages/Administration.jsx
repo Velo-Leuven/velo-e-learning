@@ -23,13 +23,13 @@ const adminTypes = [
   {
     id: 1,
     name: "Fietsverkoop Particulier Afrekenen",
-    icon: "📝",
+    icon: "💵",
     category: "Fiets",
   },
   {
     id: 2,
     name: "Fietsverhuur",
-    icon: "🚲",
+    icon: "📝",
     category: "Fiets",
   },
   {
@@ -41,7 +41,7 @@ const adminTypes = [
   {
     id: 4,
     name: "Factuur Maken(met Klantenreferentie)",
-    icon: "💳",
+    icon: "🧾",
     category: "Kassa",
   },
   {
@@ -65,7 +65,7 @@ const adminTypes = [
   {
     id: 8,
     name: "Verkooporder Aanpassen",
-    icon: "✏️",
+    icon: "📦",
     category: "Kassa",
   },
   {
@@ -95,25 +95,25 @@ const adminTypes = [
   {
     id:13,
     name:"Fiets Verplaatsen",
-    icon:"🚲",
+    icon:"📍",
     category: "Fiets",
   },
   {
   id:14,
     name:"Fiets Vervangen (diefstal)",
-    icon:"🚲",
+    icon:"🚨",
     category: "Fiets",
   },
   {
     id:15,
     name:"Fiets Verlengen",
-    icon:"🚲",
+    icon:"📊",
     category: "Fiets",
   },
   {
     id:16,
     name:" Ophaling Fiets uit Herstelling",
-    icon:"🚲",
+    icon:"🔩",
     category: "Fiets",
   }
 ];
